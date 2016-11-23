@@ -3,7 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/karatinka/Desktop/Root/Laser_tag/Source/src/p7_group3/P7_Group3.java</file>
+=======
+            <file>file:/C:/Users/janni/Documents/GitHub_Projects/P7_Group3/Source/src/TableModel/Table.java</file>
+            <file>file:/C:/Users/janni/Documents/GitHub_Projects/P7_Group3/Source/src/p7_group3/FXML.fxml</file>
+            <file>file:/C:/Users/janni/Documents/GitHub_Projects/P7_Group3/Source/src/p7_group3/FXMLController.java</file>
+            <file>file:/C:/Users/janni/Documents/GitHub_Projects/P7_Group3/Source/src/p7_group3/P7_Group3.java</file>
+>>>>>>> c9ad499b0778ee499ca07e41e828f824fe013fe3
         </group>
     </open-files>
 </project-private>
