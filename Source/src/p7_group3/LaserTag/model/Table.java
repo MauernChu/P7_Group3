@@ -1,4 +1,4 @@
-package TableModel;
+package p7_group3.LaserTag.model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

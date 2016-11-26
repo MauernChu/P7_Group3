@@ -1,4 +1,4 @@
-package p7_group3;
+package p7_group3.LaserTag;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class P7_Group3 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("view/FXML.fxml"));
         
         Scene scene = new Scene(root);
         

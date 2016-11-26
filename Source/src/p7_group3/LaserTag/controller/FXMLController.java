@@ -1,9 +1,9 @@
-package p7_group3;
+package p7_group3.LaserTag.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import TableModel.Table;
+import p7_group3.LaserTag.model.Table;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
