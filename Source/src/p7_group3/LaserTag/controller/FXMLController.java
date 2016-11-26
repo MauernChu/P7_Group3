@@ -50,6 +50,5 @@ public class FXMLController implements Initializable {
         tableID.setItems(data);
     
     }   
-   
     
 }

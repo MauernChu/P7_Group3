@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="p7_group3.LaserTag.controller.MaintenanceViewController">
+    <stylesheets>
+        <URL value="@maintenanceview.css" />
+    </stylesheets>
+   <children>
+      <Label alignment="CENTER" layoutX="283.0" layoutY="55.0" text="Maintenance" AnchorPane.bottomAnchor="318.0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
