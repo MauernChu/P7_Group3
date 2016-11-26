@@ -19,7 +19,7 @@
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
                 <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" styleClass="navButton" text="Charging" />
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" styleClass="navButton" text="Maintainance" />
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openMaintenanceView" styleClass="navButton" text="Maintainance" />
                   <Button layoutX="138.0" layoutY="9.0" mnemonicParsing="false" styleClass="navButton" text="Using" />
                </children>
             </AnchorPane>
