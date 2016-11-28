@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  * @author Jannik Boldsen
  */
 
-public class FXMLController implements Initializable {
+public class MainViewController implements Initializable {
     
     
     // DEFINE TABLE
