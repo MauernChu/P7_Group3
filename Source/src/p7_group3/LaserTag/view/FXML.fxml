@@ -34,7 +34,7 @@
                   <TableColumn prefWidth="111.0" text="maintenance" />
               </columns>
             </TableView>
-            <Button layoutX="14.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="168.0" styleClass="updateButton" text="Update" />
+            <Button fx:id="updateButton" layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#areYouSurePopUp" prefHeight="25.0" prefWidth="168.0" styleClass="updateButton" text="Update" />
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
                 <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="All equipment" />
