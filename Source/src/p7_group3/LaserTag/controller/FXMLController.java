@@ -41,7 +41,7 @@ public class FXMLController implements Initializable {
     
     //Variables for Drop Down Menu
     @FXML
-    private MenuButton menuButtonTest; 
+    private MenuButton selectEquipment; 
     @FXML
     private MenuItem allEquipment;
     @FXML
@@ -83,8 +83,12 @@ public class FXMLController implements Initializable {
     
     //Method for drop down menu
     public void dropDownMenu (ActionEvent event) throws IOException {
-    MenuButton m = new MenuButton("menuButtonTest");
+    MenuButton m = new MenuButton("selectEquipment");
     m.getItems().addAll(new MenuItem ("allEquipment"), new MenuItem ("guns"), new MenuItem ("medicalBoxes"), new MenuItem ("gameControllers"), new MenuItem ("dominationBoxes"));
 }
- 
+ //Method for showing the chosen equipment name in the drop down menu
+  public void showSelectedNameOfEquipment (ActionEvent event) throws IOException {
+    MenuItem menu = (MenuItem) event.getSource();
+    selectEquipment.setText(menu.getText());
   }
+}
