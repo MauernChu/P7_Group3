@@ -14,6 +14,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -37,6 +39,20 @@ public class FXMLController implements Initializable {
     @FXML
     TableColumn<Table, String> dateCharged;
     
+    //Variables for Drop Down Menu
+    @FXML
+    private MenuButton menuButtonTest; 
+    @FXML
+    private MenuItem allEquipment;
+    @FXML
+    private MenuItem guns;
+    @FXML
+    private MenuItem medicalBoxes;
+    @FXML
+    private MenuItem gameControllers;
+    @FXML
+    private MenuItem dominationBoxes;
+    
     // DEFINE VARIABLES
     
     // CREATE TABLE DATA
@@ -56,7 +72,7 @@ public class FXMLController implements Initializable {
         tableID.setItems(data);
     
     }   
-    
+    // Method for pushing maintenance/login page
     public void openMaintenanceView(ActionEvent event) throws IOException {
         Stage stage = new Stage();
                         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
@@ -65,4 +81,10 @@ public class FXMLController implements Initializable {
                         stage.show();
     }
     
+    //Method for drop down menu
+    public void dropDownMenu (ActionEvent event) throws IOException {
+    MenuButton m = new MenuButton("menuButtonTest");
+    m.getItems().addAll(new MenuItem ("allEquipment"), new MenuItem ("guns"), new MenuItem ("medicalBoxes"), new MenuItem ("gameControllers"), new MenuItem ("dominationBoxes"));
 }
+ 
+  }
