@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -32,29 +33,31 @@ public class LoginViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-    
-	@FXML
-	private Label lblStatus; //Creates variable connected to Scenebuilder through ID
 
-	@FXML
-	private Label lblTitel;
-	
-	@FXML
-	private TextField txtUserName;
-	
-	@FXML
-	private TextField txtPassword;
-	
-	public void Login(ActionEvent event) throws IOException { 
-		if (txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")) { //checks if the password and username matches the predifined values
-			lblStatus.setText(""); //Connects to lblStatus button, and states the given text
-			Stage stage = new Stage();
-                        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
-                        Scene scene = new Scene(root);
-                        stage.setScene(scene);
-                        stage.show();
-		} else{
-			lblStatus.setText("Login failed");
-		}
-	}
+    @FXML
+    private Label lblStatus; //Creates variable connected to Scenebuilder through ID
+
+    @FXML
+    private Label lblTitel;
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private TextField txtPassword;
+
+    public void Login(ActionEvent event) throws IOException {
+        if (txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")) { //checks if the password and username matches the predifined values
+            lblStatus.setText(""); //Connects to lblStatus button, and states the given text
+
+            Parent maintenancePage = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
+            Scene maintenanceScene = new Scene(maintenancePage);
+            Stage login_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            login_stage.hide();
+            login_stage.setScene(maintenanceScene);
+            login_stage.show();
+        } else {
+            lblStatus.setText("Login failed");
+        }
+    }
 }
