@@ -5,10 +5,12 @@
  */
 package p7_group3.LaserTag.database;
 
+import java.sql.Connection;
+
 /**
  *
  * @author Mette
  */
 public interface DbConnection {
-    
+    public Connection createConnection();
 }

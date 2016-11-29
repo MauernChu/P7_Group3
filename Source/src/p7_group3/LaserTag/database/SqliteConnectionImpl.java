@@ -15,10 +15,11 @@ import java.sql.SQLException;
  */
 public class SqliteConnectionImpl implements DbConnection {
 
+    @Override
     public Connection createConnection() {
         try{
             Class.forName("org.sqlite.JDBC");
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:\\.\\.\\Database\\LaserTagDb.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:LaserTagDb.db");
             return conn;
         }catch (ClassNotFoundException | SQLException e){
             return null;
