@@ -55,6 +55,9 @@ public class FXMLController implements Initializable {
     @FXML
     private Button updateButton;
 
+    //Variables for send to maintenance pop up
+    @FXML
+    private Button sendToMaintenanceButton;
     
     
     
@@ -105,4 +108,14 @@ public class FXMLController implements Initializable {
         stage.show();
 
     }
+    
+    //Method for sendToMaintenance pop up window
+    public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }   
+      
 }
