@@ -1,19 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="811.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenanceViewController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.FXMLController">
     <stylesheets>
-        <URL value="@maintenanceview.css" />
+        <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Label alignment="CENTER" layoutX="213.0" layoutY="21.0" text="Maintenance" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="21.0">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Label>
+      <Pane layoutX="14.0" prefHeight="600.0" prefWidth="811.0">
+         <children>
+            <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
+               <children>
+                <Button layoutX="14.0" layoutY="9.0" mnemonicParsing="false" styleClass="navButton" text="Charging" />
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openMaintenanceView" styleClass="navButton" text="Maintainance" />
+                  <Button layoutX="138.0" layoutY="9.0" mnemonicParsing="false" styleClass="navButton" text="Using" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="tableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
+              <columns>
+                  <TableColumn prefWidth="179.0" text="Equipment charged" />
+                  <TableColumn fx:id="eID" prefWidth="190.0" text="Equipment ID" />
+                  <TableColumn fx:id="dateCharged" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
+                  <TableColumn prefWidth="154.0" text="Statistics" />
+                  <TableColumn prefWidth="111.0" text="maintenance" />
+              </columns>
+            </TableView>
+            <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
+              <items>
+                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="All equipment" />
+                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Guns" />
+                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Medical Boxes" />
+                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Game Controllers" />
+                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Domination Boxes" />
+              </items>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </MenuButton>
+            <Label layoutX="631.0" layoutY="100.0" text="Select equipment">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
