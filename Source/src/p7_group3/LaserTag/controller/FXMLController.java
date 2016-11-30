@@ -84,7 +84,7 @@ public class FXMLController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/zajko.png"));
+        stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
