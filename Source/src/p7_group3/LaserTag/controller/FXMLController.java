@@ -3,6 +3,8 @@ package p7_group3.LaserTag.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
 
 import p7_group3.LaserTag.model.Table;
 
@@ -20,6 +22,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -27,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author Jannik Boldsen
  */
-public class FXMLController implements Initializable {
+public class FXMLController extends Application implements Initializable {
 
     // DEFINE TABLE
     @FXML
@@ -60,7 +64,20 @@ public class FXMLController implements Initializable {
     private Button sendToMaintenanceButton;
     
     
-    
+    //logo icon
+    @Override
+    public void start(Stage stage) {
+        StackPane root = new StackPane();
+        // set icon
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
+        stage.setScene(new Scene(root, 300, 250));
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
     
     // CREATE TABLE DATA
     final ObservableList<Table> data = FXCollections.observableArrayList(
@@ -83,6 +100,8 @@ public class FXMLController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
     }
@@ -104,6 +123,8 @@ public class FXMLController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AreYouSureView.fxml"));
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
 
@@ -114,8 +135,10 @@ public class FXMLController implements Initializable {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
         Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
     }   
-      
+         
 }
