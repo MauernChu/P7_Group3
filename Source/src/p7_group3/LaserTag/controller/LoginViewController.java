@@ -18,6 +18,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import p7_group3.LaserTag.database.AdminAccessDAO;
+import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
 /**
  * FXML Controller class
@@ -26,6 +28,8 @@ import javafx.stage.Stage;
  */
 public class LoginViewController implements Initializable {
 
+    AdminAccessDAO adminAccessDao = new AdminAccessDAO(new SqliteConnectionImpl());
+            
     /**
      * Initializes the controller class.
      */
@@ -47,9 +51,11 @@ public class LoginViewController implements Initializable {
     private TextField txtPassword;
 
     public void Login(ActionEvent event) throws IOException {
-        if (txtUserName.getText().equals("user") && txtPassword.getText().equals("pass")) { //checks if the password and username matches the predifined values
+        
+        boolean canAccess = adminAccessDao.CanAccess(txtUserName.getText(), txtPassword.getText());
+        
+        if (canAccess == true) { //checks if the password and username matches UserNameDb and PasswordDb
             lblStatus.setText(""); //Connects to lblStatus button, and states the given text
-
             Parent maintenancePage = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
             Scene maintenanceScene = new Scene(maintenancePage);
             Stage login_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
