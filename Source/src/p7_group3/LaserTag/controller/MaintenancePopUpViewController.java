@@ -40,8 +40,6 @@ public class MaintenancePopUpViewController implements Initializable {
     }
     @FXML
     private MenuButton defineProblem;
-   
-    
 
     //when pushing Cancle button, the pop up window closes
     @FXML
@@ -58,9 +56,8 @@ public class MaintenancePopUpViewController implements Initializable {
         MenuButton m = new MenuButton("defineProblem");
         m.getItems().addAll(new MenuItem("trigger"), new MenuItem("sensor"), new MenuItem("can't turn on"), new MenuItem("other"));
     }
-    //Method for showing the chosen equipment name in the drop down menu
-    
 
+    //Method for showing the chosen equipment name in the drop down menu
     public void showSelectedProblemWhenChoosing(ActionEvent event) throws IOException {
         MenuItem menu = (MenuItem) event.getSource();
         defineProblem.setText(menu.getText());
