@@ -62,6 +62,13 @@ public class FXMLController implements Initializable {
     //Variables for send to maintenance pop up
     @FXML
     private Button sendToMaintenanceButton;
+    
+    //Variables for charging/using buttons
+    @FXML
+    private Button usingButton;
+    
+    @FXML
+    private Button chargingButton;
 
     // CREATE TABLE DATA
     final ObservableList<Table> data = FXCollections.observableArrayList(
@@ -89,7 +96,30 @@ public class FXMLController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    // Method for pushing "using" page
+    public void openUsingView(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/UsingView.fxml"));
+        Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
+        stage.hide();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    // Method for pushing "charging" page
+    public void openChargingPage(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FXML.fxml"));
+        Scene scene = new Scene(root);
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
+        stage.close();
+        stage.setScene(scene);
+        stage.show();
+    }
+    
     //Method for drop down menu
     public void dropDownMenu(ActionEvent event) throws IOException {
         MenuButton m = new MenuButton("selectEquipment");
