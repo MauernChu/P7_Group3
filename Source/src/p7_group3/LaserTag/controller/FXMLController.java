@@ -31,7 +31,7 @@ import javafx.stage.Stage;
  *
  * @author Jannik Boldsen
  */
-public class FXMLController extends Application implements Initializable {
+public class FXMLController implements Initializable {
 
     // DEFINE TABLE
     @FXML
@@ -54,7 +54,7 @@ public class FXMLController extends Application implements Initializable {
     private MenuItem gameControllers;
     @FXML
     private MenuItem dominationBoxes;
-    
+
     //Variables for "Are you sure?" Pop up window
     @FXML
     private Button updateButton;
@@ -62,23 +62,7 @@ public class FXMLController extends Application implements Initializable {
     //Variables for send to maintenance pop up
     @FXML
     private Button sendToMaintenanceButton;
-    
-    
-    //logo icon
-    @Override
-    public void start(Stage stage) {
-        StackPane root = new StackPane();
-        // set icon
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        stage.setScene(new Scene(root, 300, 250));
-        stage.show();
-    }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
     // CREATE TABLE DATA
     final ObservableList<Table> data = FXCollections.observableArrayList(
             new Table(3, "21/11/2016")
@@ -96,11 +80,11 @@ public class FXMLController extends Application implements Initializable {
     }
 
     // Method for pushing maintenance/login page
-    public void openMaintenanceView(ActionEvent event) throws IOException {
+    public void openLoginView(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.getIcons().add(new Image("pictures/zajko.png"));
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
@@ -129,7 +113,7 @@ public class FXMLController extends Application implements Initializable {
         stage.show();
 
     }
-    
+
     //Method for sendToMaintenance pop up window
     public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -139,6 +123,6 @@ public class FXMLController extends Application implements Initializable {
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
-    }   
-         
+    }
+
 }
