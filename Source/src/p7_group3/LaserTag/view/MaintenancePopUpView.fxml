@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="349.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenancePopUpViewController">
     <stylesheets>
-        <URL value="@maintenancepopup.css" />
+        <URL value="@maintenancepopupview.css" />
     </stylesheets>
    <children>
       <Label layoutX="40.0" layoutY="14.0" prefHeight="52.0" prefWidth="421.0" text="Send broken equipment to maintenance">
