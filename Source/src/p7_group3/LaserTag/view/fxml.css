@@ -9,7 +9,7 @@ Table of content:
 
 /* 1 Navigation styling */
 #mainNav{
-    -fx-background-color: gray;
+    -fx-background-color: lightgray;
 }
 
 #mainNav .navButton{
@@ -17,6 +17,17 @@ Table of content:
         #a6b5c9,
         linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
         linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 7 30 7 30;
+    -fx-text-fill: #242d35;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+#mainNav .button:hover{
+    -fx-background-color: 
+        grey;
     -fx-background-insets: 0 0 -1 0,0,1;
     -fx-background-radius: 5,5,4;
     -fx-padding: 7 30 7 30;
@@ -41,6 +52,17 @@ Table of content:
         #a6b5c9,
         linear-gradient(#303842 0%, #3e5577 20%, #375074 100%),
         linear-gradient(#768aa5 0%, #849cbb 5%, #5877a2 50%, #486a9a 51%, #4a6c9b 100%);
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 7 30 7 30;
+    -fx-text-fill: #242d35;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+.updateButton:hover{
+    -fx-background-color: 
+        grey;
     -fx-background-insets: 0 0 -1 0,0,1;
     -fx-background-radius: 5,5,4;
     -fx-padding: 7 30 7 30;
