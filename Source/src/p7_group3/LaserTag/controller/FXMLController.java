@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -93,6 +94,7 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
+        //((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
     }
@@ -103,7 +105,7 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
-        stage.hide();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
     }
@@ -115,7 +117,7 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
-        stage.close();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
     }
