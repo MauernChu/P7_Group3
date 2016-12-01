@@ -52,6 +52,7 @@
                   <Font name="System Italic" size="13.0" />
                </font></Label>
             <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" onAction="#sendToMaintenancePopUp" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
+            <Button fx:id="dataTest" layoutX="32.0" layoutY="104.0" mnemonicParsing="false" onAction="#readEquipmentData" prefHeight="31.0" prefWidth="157.0" text="EquipmentData" />
          </children>
       </Pane>
    </children>

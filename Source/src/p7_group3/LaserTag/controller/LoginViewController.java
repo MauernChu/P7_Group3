@@ -29,7 +29,7 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
 public class LoginViewController implements Initializable {
 
     AdminAccessDAO adminAccessDao = new AdminAccessDAO(new SqliteConnectionImpl());
-            
+           
     /**
      * Initializes the controller class.
      */
