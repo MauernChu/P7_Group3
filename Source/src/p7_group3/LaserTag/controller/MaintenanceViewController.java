@@ -30,58 +30,5 @@ import p7_group3.LaserTag.model.Table;
  */
 public class MaintenanceViewController extends TableViewController implements Initializable {
     
-    private ObservableList<MaintenanceTable> Maindata;
-    private EquipmentAccessDAO dc;
-    
-
-    // DEFINE TABLE
-    @FXML
-    TableView<MaintenanceTable> MainTableID;
-    @FXML
-    TableColumn<MaintenanceTable, String> DamagedID;
-    @FXML
-    TableColumn<MaintenanceTable, String> DesID;
-    
-    
-    @FXML
-    private Button loadMaintenance;
-
-    
-    //  Initializes the controller class.
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        dc = new EquipmentAccessDAO();
-        
-    }
-    
-      //Method for loading database button
-    @FXML
-    public void loadMaintenanceDatabase(ActionEvent event){
-    try {
-            Connection conn = dc.Connect();
-            
-            Maindata = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MaintenanceTable");
-            while (rs.next()) {
-                //get string from db,whichever way 
-                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                Maindata.add(new MaintenanceTable(rs.getString(1), rs.getString(2)));
-                //rs.updateTime(, time);
-                //data.add(new Table(rs.updateTime(2, time)));
-                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
-               
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error"+ex);
-        }
-        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
-        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
-        
-        MainTableID.setItems(null);
-        MainTableID.setItems(Maindata);
-    }
     
 }

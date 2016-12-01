@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.database.EquipmentAccessDAO;
+import p7_group3.LaserTag.model.MaintenanceTable;
 
 /**
  * FXML Controller class
@@ -42,8 +43,13 @@ import p7_group3.LaserTag.database.EquipmentAccessDAO;
  */
 public class TableViewController implements Initializable {
     
+    // Front page private variables
     private ObservableList<Table> data;
-    private EquipmentAccessDAO dc;
+    private EquipmentAccessDAO dc; // Used by both front page and maintenance page
+    
+    // Maintenance page private variables 
+    private ObservableList<MaintenanceTable> Maindata;
+  
     
     private Date date;
     Time time;
@@ -52,19 +58,33 @@ public class TableViewController implements Initializable {
     //double time2 = 4.5;
    
 
-    // DEFINE TABLE
+    // DEFINE TABLEVIEW AND COLUMNS FOR FRONT PAGE
     @FXML
     TableView<Table> tableID;
     @FXML
     TableColumn<Table, String> eqID;
     @FXML
     TableColumn<Table, Double> chargeDateID;
-
-    //Variables for Drop Down Menu
+    
+    // DEFINE TABLEVIEW AND COLUMNS FOR MAINTENANCE PAGE
     @FXML
-    private MenuButton selectEquipment;
+    TableView<MaintenanceTable> MainTableID;
+    @FXML
+    TableColumn<MaintenanceTable, String> DamagedID;
+    @FXML
+    TableColumn<MaintenanceTable, String> DesID;
+    
+    // Load database button for Front page
     @FXML
     private Button load;
+    
+    // Load database button for Maintenance
+    @FXML
+    private Button loadMaintenance;
+
+    //Variables for Drop Down Menu SHARED BETWEEN ALL PAGES
+    @FXML
+    private MenuButton selectEquipment;
     @FXML
     private MenuItem allEquipment;
     @FXML
@@ -114,7 +134,7 @@ public class TableViewController implements Initializable {
         stage.show();
     }
 
-    //Method for loading database button
+    //Method for loading database on the front page
     @FXML
     public void loadDatabase(ActionEvent event){
     try {
@@ -141,6 +161,36 @@ public class TableViewController implements Initializable {
         
         tableID.setItems(null);
         tableID.setItems(data);
+    }
+    
+    
+    //Method for loading database on Maintenance page
+    @FXML
+    public void loadMaintenanceDatabase(ActionEvent event){
+    try {
+            Connection conn = dc.Connect();
+            
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MaintenanceTable");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                Maindata.add(new MaintenanceTable(rs.getString(1), rs.getString(2)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+        
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
     }
     
 
