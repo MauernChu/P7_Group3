@@ -4,14 +4,14 @@ package p7_group3.LaserTag.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
-import javafx.application.Application;
-import static javafx.application.Application.launch;
 
 import p7_group3.LaserTag.model.Table;
 
@@ -31,7 +31,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.database.EquipmentAccessDAO;
 import p7_group3.LaserTag.model.MaintenanceTable;
@@ -49,7 +48,7 @@ public class TableViewController implements Initializable {
     
     // Maintenance page private variables 
     private ObservableList<MaintenanceTable> Maindata;
-  
+   
     
     private Date date;
     Time time;
@@ -173,10 +172,12 @@ public class TableViewController implements Initializable {
             Maindata = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MaintenanceTable");
+            //Statement st = conn.createStatement();
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
                 Maindata.add(new MaintenanceTable(rs.getString(1), rs.getString(2)));
+                
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
                 //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
@@ -193,6 +194,32 @@ public class TableViewController implements Initializable {
         MainTableID.setItems(Maindata);
     }
     
+    
+      // Method for pushing "using" page
+    public void SendToMaintenance(ActionEvent event) throws IOException {
+         
+        try {
+            Connection conn = dc.Connect();
+            
+            Statement st = conn.createStatement();
+            // Execute query and store result in a resultset
+            ResultSet rs = st.executeQuery("SELECT * FROM MaintenanceTable");
+            PreparedStatement ps =null;
+            while (rs.next()) {
+                 ps = conn.prepareStatement("insert into Test values (?)");
+                 ps.setString(2,rs.getString(1));
+                 
+                 ps.executeUpdate();
+                
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+
+    }
 
     // Method for pushing "using" page
     public void openUsingView(ActionEvent event) throws IOException {
