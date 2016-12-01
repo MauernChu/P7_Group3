@@ -26,8 +26,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import p7_group3.LaserTag.database.EquipmentDataDAO;
-import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
 /**
  * FXML Controller class
@@ -36,11 +34,7 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
  */
 public class FXMLController implements Initializable {
 
-//New object of the EquipmentDataDAO class, which we are using in a method further down. 
-  EquipmentDataDAO equipmentDataDAO = new EquipmentDataDAO(new SqliteConnectionImpl());
- 
-  
-// DEFINE TABLE
+    // DEFINE TABLE
     @FXML
     TableView<Table> tableID;
     @FXML
@@ -76,11 +70,6 @@ public class FXMLController implements Initializable {
     
     @FXML
     private Button chargingButton;
-    
-    //Test for database
-    
-   @FXML
-   private Button dataTest;
 
     // CREATE TABLE DATA
     final ObservableList<Table> data = FXCollections.observableArrayList(
@@ -168,15 +157,4 @@ public class FXMLController implements Initializable {
         stage.show();
     }
 
-    
-    //Calling the method made "readEquipmentFromDatabase" fom EquipmentDataDAO class
-    //The Method prints all the information from the EquipmentData table in the database
-    //In the console
-   public void readEquipmentData(ActionEvent event) throws IOException {
-       //Here you are calling the object that you made from the EquipmentDataDAOclass
-      equipmentDataDAO.readEquipmentFromDatabase();
-       }
-   }
-    
-    
-
+}
