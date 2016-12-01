@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author karatinka
  */
-public class UsingViewController extends FXMLController implements Initializable {
+public class UsingViewController extends TableViewController implements Initializable {
 
     /**
      * Initializes the controller class.

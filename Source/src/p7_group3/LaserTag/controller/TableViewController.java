@@ -1,7 +1,14 @@
 package p7_group3.LaserTag.controller;
 
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Time;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -26,25 +33,38 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import p7_group3.LaserTag.database.EquipmentAccessDAO;
 
 /**
  * FXML Controller class
  *
  * @author Jannik Boldsen
  */
-public class FXMLController implements Initializable {
+public class TableViewController implements Initializable {
+    
+    private ObservableList<Table> data;
+    private EquipmentAccessDAO dc;
+    
+    private Date date;
+    Time time;
+    //double time = 2.5;
+    //double time1 = 3.5;
+    //double time2 = 4.5;
+   
 
     // DEFINE TABLE
     @FXML
     TableView<Table> tableID;
     @FXML
-    TableColumn<Table, Integer> eID;
+    TableColumn<Table, String> eqID;
     @FXML
-    TableColumn<Table, String> dateCharged;
+    TableColumn<Table, Double> chargeDateID;
 
     //Variables for Drop Down Menu
     @FXML
     private MenuButton selectEquipment;
+    @FXML
+    private Button load;
     @FXML
     private MenuItem allEquipment;
     @FXML
@@ -71,21 +91,16 @@ public class FXMLController implements Initializable {
     @FXML
     private Button chargingButton;
 
-    // CREATE TABLE DATA
-    final ObservableList<Table> data = FXCollections.observableArrayList(
-            new Table(3, "21/11/2016")
-    );
 
     //  Initializes the controller class.
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        eID.setCellValueFactory(new PropertyValueFactory<>("rID"));
-        dateCharged.setCellValueFactory(new PropertyValueFactory<>("rDateCharged"));
-
-        tableID.setItems(data);
-
+        dc = new EquipmentAccessDAO();
+        
     }
+
+    
 
     // Method for pushing maintenance/login page
     public void openLoginView(ActionEvent event) throws IOException {
@@ -98,6 +113,37 @@ public class FXMLController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+
+    //Method for loading database button
+    @FXML
+    public void loadDatabase(ActionEvent event){
+    try {
+            Connection conn = dc.Connect();
+            
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Test");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+        
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+
     // Method for pushing "using" page
     public void openUsingView(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -105,9 +151,9 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
     
     // Method for pushing "charging" page
@@ -117,10 +163,11 @@ public class FXMLController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
+
     
     //Method for drop down menu
     public void dropDownMenu(ActionEvent event) throws IOException {
