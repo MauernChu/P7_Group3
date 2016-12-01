@@ -109,6 +109,9 @@ public class TableViewController implements Initializable {
     
     @FXML
     private Button chargingButton;
+    
+    @FXML
+    private Button chargingOpeningPopUpButton;
 
 
     //  Initializes the controller class.
@@ -195,7 +198,7 @@ public class TableViewController implements Initializable {
     }
     
     
-      // Method for pushing "using" page
+      // Method for sending data from one table to another
     public void SendToMaintenance(ActionEvent event) throws IOException {
          
         try {
@@ -242,8 +245,39 @@ public class TableViewController implements Initializable {
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        //((Node)(event.getSource())).getScene().getWindow().hide();
+        //Method for loading database on the front page
+    //public void openChargingPage(ActionEvent event) throws IOException {
+       
+        try {
+            
+            Connection conn = dc.Connect();
+            
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Test");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+        
+        tableID.setItems(null);
+        tableID.setItems(data);
+        
+      
     }
+    
 
     
     //Method for drop down menu
@@ -251,14 +285,14 @@ public class TableViewController implements Initializable {
         MenuButton m = new MenuButton("selectEquipment");
         m.getItems().addAll(new MenuItem("allEquipment"), new MenuItem("guns"), new MenuItem("medicalBoxes"), new MenuItem("gameControllers"), new MenuItem("dominationBoxes"));
     }
+    
     //Method for showing the chosen equipment name in the drop down menu
-
     public void showSelectedNameOfEquipment(ActionEvent event) throws IOException {
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
+    
     //Method for "Are you sure?" pop up window
-
     public void areYouSurePopUp(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AreYouSureView.fxml"));
