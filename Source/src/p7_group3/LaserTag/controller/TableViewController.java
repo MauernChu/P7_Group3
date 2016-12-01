@@ -151,9 +151,9 @@ public class TableViewController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
-        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
     
     // Method for pushing "charging" page
@@ -163,9 +163,9 @@ public class TableViewController implements Initializable {
         Scene scene = new Scene(root);
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
-        ((Node)(event.getSource())).getScene().getWindow().hide();
         stage.setScene(scene);
         stage.show();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
     
