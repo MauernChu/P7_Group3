@@ -145,7 +145,7 @@ public class TableViewController implements Initializable {
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                data.add(new Table(rs.getString(2), rs.getDouble(3)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
                 //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
@@ -176,7 +176,7 @@ public class TableViewController implements Initializable {
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(3)));
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
                 
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
