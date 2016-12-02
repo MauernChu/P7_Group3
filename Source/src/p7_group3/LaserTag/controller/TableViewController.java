@@ -9,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -126,14 +125,13 @@ public class TableViewController implements Initializable {
 
     // Method for pushing maintenance/login page
     public void openLoginView(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
-        Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        //((Node)(event.getSource())).getScene().getWindow().hide();
-        stage.setScene(scene);
-        stage.show();
+        Stage loginStage = new Stage();
+        Parent loginParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/LoginView.fxml"));
+        Scene loginScene= new Scene(loginParent);
+        loginStage.getIcons().add(new Image("pictures/glove.png"));
+        loginStage.setTitle("Laser-tag application");
+        loginStage.setScene(loginScene);
+        loginStage.show();
     }
 
     //Method for loading database on the front page
@@ -224,28 +222,31 @@ public class TableViewController implements Initializable {
 
     }
 
-    // Method for pushing "using" page
+    // Method for pushing "using" scene
     public void openUsingView(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/UsingView.fxml"));
-        Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        stage.setScene(scene);
-        stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        Parent usingParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/UsingView.fxml"));
+        Scene usingScene = new Scene(usingParent);
+        Stage usingStage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
+        usingStage.setScene(usingScene);
+        usingStage.show();
     }
     
-    // Method for pushing "charging" page
+    // Method for loging in to "maintenance" scene
+    public void openMaintenanceView(ActionEvent event) throws IOException {
+            Parent maintenanceParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
+            Scene maintenanceScene = new Scene(maintenanceParent);
+            Stage maintenanceStage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            maintenanceStage.setScene(maintenanceScene);
+            maintenanceStage.show();
+    }
+    
+    // Method for pushing "charging" scene
     public void openChargingPage(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FXML.fxml"));
-        Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        stage.setScene(scene);
-        stage.show();
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        Parent chargingParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FXML.fxml"));
+        Scene chargingScene = new Scene(chargingParent);
+        Stage chargingStage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
+        chargingStage.setScene(chargingScene);
+        chargingStage.show();
         //Method for loading database on the front page
     //public void openChargingPage(ActionEvent event) throws IOException {
        
