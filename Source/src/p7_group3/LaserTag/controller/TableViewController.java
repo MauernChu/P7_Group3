@@ -245,11 +245,11 @@ public class TableViewController implements Initializable {
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
-        //((Node)(event.getSource())).getScene().getWindow().hide();
+        ((Node)(event.getSource())).getScene().getWindow().hide();
         //Method for loading database on the front page
     //public void openChargingPage(ActionEvent event) throws IOException {
        
-        try {
+       /* try {
             
             Connection conn = dc.Connect();
             
@@ -275,7 +275,7 @@ public class TableViewController implements Initializable {
         tableID.setItems(null);
         tableID.setItems(data);
         
-      
+      */
     }
     
 

@@ -58,8 +58,8 @@ public class LoginViewController implements Initializable {
             lblStatus.setText(""); //Connects to lblStatus button, and states the given text
             Parent maintenancePage = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
             Scene maintenanceScene = new Scene(maintenancePage);
-            Stage login_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            login_stage.hide();
+            Stage login_stage = (Stage)
+            ((Node) event.getSource()).getScene().getWindow(); login_stage.hide();
             login_stage.setScene(maintenanceScene);
             login_stage.show();
         } else {
