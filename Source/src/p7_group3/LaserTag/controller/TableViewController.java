@@ -30,6 +30,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.database.EquipmentAccessDAO;
 import p7_group3.LaserTag.model.MaintenanceTable;
@@ -127,6 +128,7 @@ public class TableViewController implements Initializable {
         loginStage.getIcons().add(new Image("pictures/glove.png"));
         loginStage.setTitle("Laser-tag application");
         loginStage.setScene(loginScene);
+        loginStage.initModality(Modality.APPLICATION_MODAL);
         loginStage.show();
     }
 
