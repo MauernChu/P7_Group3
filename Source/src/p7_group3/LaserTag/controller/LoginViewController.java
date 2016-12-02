@@ -56,14 +56,16 @@ public class LoginViewController implements Initializable {
         
         if (canAccess == true) { //checks if the password and username matches UserNameDb and PasswordDb
             lblStatus.setText(""); //Connects to lblStatus button, and states the given text
-            Parent maintenancePage = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenanceView.fxml"));
-            Scene maintenanceScene = new Scene(maintenancePage);
-            Stage login_stage = (Stage)
-            ((Node) event.getSource()).getScene().getWindow(); login_stage.hide();
-            login_stage.setScene(maintenanceScene);
-            login_stage.show();
+            ((Node)(event.getSource())).getScene().getWindow().hide();
+            TableViewController openMaintenanceView = new TableViewController();
+            openMaintenanceView.openMaintenanceView(event);
         } else {
             lblStatus.setText("Login failed");
         }
     }
+       /* Parent chargingParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FXML.fxml"));
+        Scene chargingScene = new Scene(chargingParent);
+        Stage chargingStage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
+        chargingStage.setScene(chargingScene);
+        chargingStage.show();*/
 }
