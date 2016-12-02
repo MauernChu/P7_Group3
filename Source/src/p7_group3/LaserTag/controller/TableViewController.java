@@ -48,12 +48,9 @@ public class TableViewController implements Initializable {
     // Maintenance page private variables 
     private ObservableList<MaintenanceTable> Maindata;
    
-    
+    // Variables for storing the time
     private Date date;
     Time time;
-    //double time = 2.5;
-    //double time1 = 3.5;
-    //double time2 = 4.5;
    
 
     // DEFINE TABLEVIEW AND COLUMNS FOR FRONT PAGE
@@ -72,7 +69,7 @@ public class TableViewController implements Initializable {
     @FXML
     TableColumn<MaintenanceTable, String> DesID;
     
-    // Load database button for Front page
+    // Load database button
     @FXML
     private Button load;
     
@@ -133,15 +130,15 @@ public class TableViewController implements Initializable {
         loginStage.show();
     }
 
-    //Method for loading database on the front page
+    //Method for loading database for CHARGING
     @FXML
-    public void loadDatabase(ActionEvent event){
+    public void loadDatabaseCharging(ActionEvent event){
     try {
             Connection conn = dc.Connect();
             
             data = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase order by TimePutToChargeNumeric asc");
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
@@ -163,9 +160,33 @@ public class TableViewController implements Initializable {
     }
     
     
-    //Method for loading database on Maintenance page
+    //Method for loading database on the front page
     @FXML
-    public void loadMaintenanceDatabase(ActionEvent event){
+    public void loadDatabaseUsing(ActionEvent event){
+    try {
+            Connection conn = dc.Connect();
+            
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase order by TimePutToChargeNumeric desc");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error"+ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+        
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+    //Method for loading database for USING
+    @FXML
+    public void loadDatabaseMaintenance(ActionEvent event){
     try {
             Connection conn = dc.Connect();
             
@@ -175,13 +196,7 @@ public class TableViewController implements Initializable {
             //Statement st = conn.createStatement();
             while (rs.next()) {
                 //get string from db,whichever way 
-                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
                 Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
-                
-                //rs.updateTime(, time);
-                //data.add(new Table(rs.updateTime(2, time)));
-                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
-               
             }
 
         } catch (SQLException ex) {
@@ -195,31 +210,6 @@ public class TableViewController implements Initializable {
     }
     
     
-      // Method for sending data from one table to another
-    public void SendToMaintenance(ActionEvent event) throws IOException {
-         
-        try {
-            Connection conn = dc.Connect();
-            
-            Statement st = conn.createStatement();
-            // Execute query and store result in a resultset
-            ResultSet rs = st.executeQuery("SELECT * FROM MaintenanceTable");
-            PreparedStatement ps =null;
-            while (rs.next()) {
-                 ps = conn.prepareStatement("insert into Test values (?)");
-                 ps.setString(2,rs.getString(1));
-                 
-                 ps.executeUpdate();
-                
-                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
-               
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error"+ex);
-        }
-
-    }
 
     // Method for pushing "using" scene
     public void openUsingView(ActionEvent event) throws IOException {
@@ -246,39 +236,7 @@ public class TableViewController implements Initializable {
         Stage chargingStage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
         chargingStage.setScene(chargingScene);
         chargingStage.show();
-        //Method for loading database on the front page
-    //public void openChargingPage(ActionEvent event) throws IOException {
-       
-       /* try {
-            
-            Connection conn = dc.Connect();
-            
-            data = FXCollections.observableArrayList();
-            // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Test");
-            while (rs.next()) {
-                //get string from db,whichever way 
-                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                //rs.updateTime(, time);
-                //data.add(new Table(rs.updateTime(2, time)));
-                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
-               
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Error"+ex);
-        }
-        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
-        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
-        
-        tableID.setItems(null);
-        tableID.setItems(data);
-        
-      */
     }
-    
-
     
     //Method for drop down menu
     public void dropDownMenu(ActionEvent event) throws IOException {

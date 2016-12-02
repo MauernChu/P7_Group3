@@ -48,8 +48,8 @@
                <font>
                   <Font name="System Italic" size="13.0" />
                </font></Label>
-            <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" onAction="#SendToMaintenance" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
-            <Button id="loadMaintenance" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" text="Load Database" onAction="#loadMaintenanceDatabase" />
+            <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
+            <Button id="loadMaintenance" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" text="Load Database" onAction="#loadDatabaseMaintenance" />
          </children>
       </Pane>
    </children>

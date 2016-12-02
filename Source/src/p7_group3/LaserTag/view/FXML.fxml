@@ -20,9 +20,9 @@
          <children>
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
-                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="true" onAction="#openChargingPage" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
+                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="true" onAction="#loadDatabaseCharging" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
                   <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Maintainance" />
-                  <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#openUsingView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Using" />
+                  <Button fx:id="usingButton" onAction="#loadDatabaseUsing" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Using" />
                </children>
             </AnchorPane>
             <TableView fx:id="tableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
@@ -53,7 +53,7 @@
                   <Font name="System Italic" size="13.0" />
                </font></Label>
             <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" onAction="#sendToMaintenancePopUp" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
-            <Button id="load" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" onAction="#loadDatabase" text="Load Database" />
+            <Button id="load" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" onAction="#loadDatabaseCharging" text="Load Database" />
          </children>
       </Pane>
    </children>

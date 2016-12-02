@@ -16,7 +16,7 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Button layoutX="82.0" layoutY="186.0" mnemonicParsing="false" onAction="#openChargingPage" prefHeight="41.0" prefWidth="182.0" text="Charging the equipment" />
-      <Button layoutX="294.0" layoutY="186.0" mnemonicParsing="false" onAction="#openUsingView" prefHeight="41.0" prefWidth="182.0" text="Prepare equipment for game" />
+      <Button layoutX="82.0" layoutY="186.0" mnemonicParsing="false" onAction="#loadDatabaseCharging" prefHeight="41.0" prefWidth="182.0" text="Charging the equipment" />
+      <Button layoutX="294.0" layoutY="186.0" mnemonicParsing="false" onAction="#loadDatabaseUsing" prefHeight="41.0" prefWidth="182.0" text="Prepare equipment for game" />
    </children>
 </AnchorPane>
