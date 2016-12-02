@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.util.ArrayList;
+import javafx.scene.control.TableColumn.SortType; 
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -17,6 +18,8 @@ import p7_group3.LaserTag.model.Table;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +55,7 @@ public class TableViewController implements Initializable {
     
     private Date date;
     Time time;
+    int z;
     //double time = 2.5;
     //double time1 = 3.5;
     //double time2 = 4.5;
@@ -143,12 +147,13 @@ public class TableViewController implements Initializable {
             Connection conn = dc.Connect();
             
             data = FXCollections.observableArrayList();
+           
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Test");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
             while (rs.next()) {
                 //get string from db,whichever way 
-                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(3)));
+                
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
                 //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
@@ -160,9 +165,11 @@ public class TableViewController implements Initializable {
         }
         eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
         chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
-        
+
+   
         tableID.setItems(null);
         tableID.setItems(data);
+        
     }
     
     
@@ -174,12 +181,12 @@ public class TableViewController implements Initializable {
             
             Maindata = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MaintenanceTable");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
             //Statement st = conn.createStatement();
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                Maindata.add(new MaintenanceTable(rs.getString(1), rs.getString(2)));
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(3)));
                 
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));

@@ -27,10 +27,11 @@
             </AnchorPane>
             <TableView fx:id="tableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
               <columns>
-                  <TableColumn prefWidth="179.0" text="Equipment charged" />
-                  <TableColumn fx:id="eqID" prefWidth="190.0" text="Equipment ID" />
-                  <TableColumn fx:id="chargeDateID" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
-                  <TableColumn prefWidth="154.0" text="Statistics" />
+                  <TableColumn editable="false" prefWidth="179.0" sortable="false" text="Equipment charged" />
+                  <TableColumn fx:id="eqID" editable="false" prefWidth="190.0" sortable="false" text="Equipment ID" />
+                  <TableColumn fx:id="chargeDate" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Date of charge" />
+                  <TableColumn fx:id="chargeDateID" editable="false" minWidth="0.0" prefWidth="150.0" text="DateNumeric" />
+                  <TableColumn editable="false" prefWidth="154.0" sortable="false" text="Statistics" />
                   <TableColumn prefWidth="111.0" text="maintenance" />
               </columns>
             </TableView>
@@ -52,7 +53,7 @@
                   <Font name="System Italic" size="13.0" />
                </font></Label>
             <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" onAction="#sendToMaintenancePopUp" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
-            <Button id="load" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" text="Load Database" onAction="#loadDatabase" />
+            <Button id="load" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" onAction="#loadDatabase" text="Load Database" />
          </children>
       </Pane>
    </children>
