@@ -121,7 +121,6 @@ public class TableViewController implements Initializable {
         
     }
 
-    
 
     // Method for pushing maintenance/login page
     public void openLoginView(ActionEvent event) throws IOException {
@@ -142,11 +141,11 @@ public class TableViewController implements Initializable {
             
             data = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM Test");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(3)));
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
                 //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
@@ -172,12 +171,12 @@ public class TableViewController implements Initializable {
             
             Maindata = FXCollections.observableArrayList();
             // Execute query and store result in a resultset
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MaintenanceTable");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
             //Statement st = conn.createStatement();
             while (rs.next()) {
                 //get string from db,whichever way 
                 //data.add(new Table(rs.getString(1), rs.getDouble(2)));
-                Maindata.add(new MaintenanceTable(rs.getString(1), rs.getString(2)));
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(3)));
                 
                 //rs.updateTime(, time);
                 //data.add(new Table(rs.updateTime(2, time)));
