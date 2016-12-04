@@ -22,7 +22,9 @@ public class MainApplication extends Application {
         this.primaryStage = primaryStage;
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/TableView.fxml"));
-        loader.setController(new TableViewController());
+        loader.setController(new TableViewController()); //making instance programmaticaaly (with out scenebuilder)
+        //because we know that we need this (the same) instance in multiple views (when we go from maintenance and back
+        //to tableview)
         Parent root = (Parent) loader.load();
         Scene homeScene = new Scene(root);
         primaryStage.getIcons().add(new Image("pictures/glove.png"));
