@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import p7_group3.LaserTag.controller.TableViewController;
 
 /**
  *
@@ -13,23 +14,26 @@ import javafx.stage.Stage;
  */
 public class MainApplication extends Application {
     
-    @Override
-    public void start(Stage stage) throws Exception {
-        Parent homePage = FXMLLoader.load(getClass().getResource("view/FXML.fxml"));
-        Scene homeScene = new Scene(homePage);
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        stage.setScene(homeScene);
-        stage.show();
-        //Stage stage1 = new Stage();
-        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FirstPopUpView.fxml"));
-        //Scene scene = new Scene(root);
-        //stage1.getIcons().add(new Image("pictures/glove.png"));
-        //stage1.setTitle("Laser-tag application");
-        //stage1.setScene(scene);
-        //stage1.show();
-    }
+    public MainApplication mainApplication;
+    public Stage primaryStage;
     
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
+        
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/TableView.fxml"));
+        loader.setController(new TableViewController());
+        Parent root = (Parent) loader.load();
+        Scene homeScene = new Scene(root);
+        primaryStage.getIcons().add(new Image("pictures/glove.png"));
+        primaryStage.setTitle("Laser-tag application");
+        primaryStage.setScene(homeScene);
+        primaryStage.show();
+        
+        //Set the main application reference in the tableViewController
+        TableViewController tableViewController = loader.getController();
+        tableViewController.setMainApp(this);
+    }
     
     /**
      * @param args the command line arguments
@@ -37,5 +41,4 @@ public class MainApplication extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
 }

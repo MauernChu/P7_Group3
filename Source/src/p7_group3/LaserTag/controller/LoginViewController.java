@@ -10,14 +10,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import p7_group3.LaserTag.database.AdminAccessDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
@@ -28,6 +24,7 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
  */
 public class LoginViewController implements Initializable {
 
+    TableViewController tableViewController;
     AdminAccessDAO adminAccessDao = new AdminAccessDAO(new SqliteConnectionImpl());
             
     /**
@@ -57,15 +54,13 @@ public class LoginViewController implements Initializable {
         if (canAccess == true) { //checks if the password and username matches UserNameDb and PasswordDb
             lblStatus.setText(""); //Connects to lblStatus button, and states the given text
             ((Node)(event.getSource())).getScene().getWindow().hide();
-            TableViewController openMaintenanceView = new TableViewController();
-            openMaintenanceView.openMaintenanceView(event);
+            tableViewController.openMaintenanceView(event);
         } else {
             lblStatus.setText("Login failed");
         }
     }
-       /* Parent chargingParent = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FXML.fxml"));
-        Scene chargingScene = new Scene(chargingParent);
-        Stage chargingStage = (Stage) ((Node)(event.getSource())).getScene().getWindow();
-        chargingStage.setScene(chargingScene);
-        chargingStage.show();*/
+    
+    public void setTableViewController(TableViewController tableViewController) {
+        this.tableViewController = tableViewController;
+    }
 }
