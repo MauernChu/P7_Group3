@@ -21,13 +21,13 @@ public class MainApplication extends Application {
         stage.setTitle("Laser-tag application");
         stage.setScene(homeScene);
         stage.show();
-        Stage stage1 = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FirstPopUpView.fxml"));
-        Scene scene = new Scene(root);
-        stage1.getIcons().add(new Image("pictures/glove.png"));
-        stage1.setTitle("Laser-tag application");
-        stage1.setScene(scene);
-        stage1.show();
+        //Stage stage1 = new Stage();
+        //Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/FirstPopUpView.fxml"));
+        //Scene scene = new Scene(root);
+        //stage1.getIcons().add(new Image("pictures/glove.png"));
+        //stage1.setTitle("Laser-tag application");
+        //stage1.setScene(scene);
+        //stage1.show();
     }
     
     
