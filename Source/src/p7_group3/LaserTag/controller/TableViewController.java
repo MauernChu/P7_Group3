@@ -117,6 +117,7 @@ public class TableViewController implements Initializable {
         dc = new EquipmentAccessDAO();
 
     }
+    
 
     //Method for loading database for CHARGING
     @FXML
@@ -173,10 +174,10 @@ public class TableViewController implements Initializable {
         tableID.setItems(data);
     }
 
-    //Method for loading database for USING
+    //Method for loading database for MAINTENANCE
     @FXML
     public void loadDatabaseMaintenance(ActionEvent event) throws IOException {
-        ChangeSceneToTableView();
+        //ChangeSceneToTableView();
         
         try {
             Connection conn = dc.Connect();
@@ -233,10 +234,297 @@ public class TableViewController implements Initializable {
     }
 
     //Method for showing the chosen equipment name in the drop down menu
-    public void showSelectedNameOfEquipment(ActionEvent event) throws IOException {
+   /* public void showSelectedNameOfEquipment(ActionEvent event) throws IOException {
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
+    }*/
+    
+    //Method for loading ALL EQUIPMENT NOT SORTED IN MAIN SCREEN
+    @FXML
+    public void showSelectedNameOfEquipment (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+
+        tableID.setItems(null);
+        tableID.setItems(data);
     }
+    
+    
+    //Method for loading ALL EQUIPMENT NOT SORTED IN MAINTENANCE
+    @FXML
+    public void showSelectedNameOfEquipmentMaintenance (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
+    }
+    
+    //Method for loading GUNS ONLY IN MAIN SCREEN
+    @FXML
+    public void showGuns (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%'");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+     //Method for loading GUNS ONLY IN MAINTENANCE
+    @FXML
+    public void showGunsMaintenance(ActionEvent event) throws IOException {
+        //ChangeSceneToTableView();
+        
+        try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%'");
+            //Statement st = conn.createStatement();
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
+    }
+    
+    
+    //Method for loading MEDIX BOXES ONLY IN MAIN SCREEN
+    @FXML
+    public void showMedic (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%'");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+    //Method for loading MEDIC BOXES ONLY IN MAINTENANCE
+    @FXML
+    public void showMedicMaintenance(ActionEvent event) throws IOException {
+        //ChangeSceneToTableView();
+        
+        try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%'");
+            //Statement st = conn.createStatement();
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
+    }
+    
+    
+    //Method for loading GAME CONTROLLER ONLY IN MAIN SCREEN
+    @FXML
+    public void showController (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%'");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+    //Method for loading GAME CONTROLLER ONLY IN MAINTENANCE
+    @FXML
+    public void showControllerMaintenance(ActionEvent event) throws IOException {
+        //ChangeSceneToTableView();
+        
+        try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%'");
+            //Statement st = conn.createStatement();
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
+    }
+    
+    
+    //Method for loading DOMINATION BOXES ONLY IN MAIN SCREEN
+    @FXML
+    public void showDomination (ActionEvent event) throws IOException {
+        try {
+            Connection conn = dc.Connect();
+
+            data = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%'");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                //data.add(new Table(rs.getString(1), rs.getDouble(2)));
+                data.add(new Table(rs.getString(2), rs.getDouble(4)));
+                //rs.updateTime(, time);
+                //data.add(new Table(rs.updateTime(2, time)));
+                //data.add(new Table(rs.getString(1), rs.getDouble("INSERT INTO Test (Date of charge) VALUES('" + time + "')")));
+
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        eqID.setCellValueFactory(new PropertyValueFactory<>("rID"));
+        chargeDateID.setCellValueFactory(new PropertyValueFactory<>("dID"));
+
+        tableID.setItems(null);
+        tableID.setItems(data);
+    }
+    
+    //Method for loading DOMINATION BOXES ONLY IN MAINTENANCE
+    @FXML
+    public void showDominationMaintenance(ActionEvent event) throws IOException {
+        //ChangeSceneToTableView();
+        
+        try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%'");
+            //Statement st = conn.createStatement();
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
+    }
+    
 
     //Method for "Are you sure?" pop up window
     public void areYouSurePopUp(ActionEvent event) throws IOException {

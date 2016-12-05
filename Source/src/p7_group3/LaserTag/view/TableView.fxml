@@ -39,10 +39,10 @@
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
                 <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="All equipment" />
-                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Guns" />
-                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Medical Boxes" />
-                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Game Controllers" />
-                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Domination Boxes" />
+                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showGuns" text="Guns" />
+                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedic" text="Medical Boxes" />
+                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showController" text="Game Controllers" />
+                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDomination" text="Domination Boxes" />
               </items>
                <font>
                   <Font name="System Bold" size="15.0" />
