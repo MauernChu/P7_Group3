@@ -127,6 +127,8 @@ public class TableViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         dc = new EquipmentAccessDAO();
+        loadDatabaseChargingAtStart();
+        
 
     }
     
@@ -135,6 +137,10 @@ public class TableViewController implements Initializable {
     @FXML
     public void loadDatabaseCharging(ActionEvent event) throws IOException {
         ChangeSceneToTableView();
+        loadDatabaseChargingAtStart();
+    }
+
+    private void loadDatabaseChargingAtStart() {
         try {
             Connection conn = dc.Connect();
 
@@ -607,7 +613,7 @@ public class TableViewController implements Initializable {
     
     // Method for pushing "using" scene
     public void openUsingView(ActionEvent event) throws IOException {
-        //ChangeSceneToUsingView();
+        ChangeSceneToUsingView();
         try {
             Connection conn = dc.Connect();
 
