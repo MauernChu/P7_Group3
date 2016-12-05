@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import p7_group3.LaserTag.MainApplication;
 import p7_group3.LaserTag.database.EquipmentAccessDAO;
 import p7_group3.LaserTag.model.MaintenanceTable;
+import p7_group3.LaserTag.model.UsingTable;
 
 /**
  * FXML Controller class
@@ -49,6 +50,9 @@ public class TableViewController implements Initializable {
 
     // Maintenance page private variables 
     private ObservableList<MaintenanceTable> Maindata;
+    
+    // Using page  page private variables 
+    private ObservableList<UsingTable> Usingdata;
 
     // Variables for storing the time
     private Date date;
@@ -61,6 +65,14 @@ public class TableViewController implements Initializable {
     TableColumn<Table, String> eqID;
     @FXML
     TableColumn<Table, Double> chargeDateID;
+    
+    // DEFINE TABLEVIEW AND COLUMNS FOR USING PAGE
+    @FXML
+    TableView<UsingTable> usingTableID;
+    @FXML
+    TableColumn<UsingTable, String> usingEqID;
+    @FXML
+    TableColumn<UsingTable, Double> chargeUsingDateID;
 
     // DEFINE TABLEVIEW AND COLUMNS FOR MAINTENANCE PAGE
     @FXML
@@ -178,7 +190,6 @@ public class TableViewController implements Initializable {
     //Method for loading database for MAINTENANCE
     @FXML
     public void loadDatabaseMaintenance(ActionEvent event) throws IOException {
-        //ChangeSceneToTableView();
         
         try {
             Connection conn = dc.Connect();
@@ -226,6 +237,26 @@ public class TableViewController implements Initializable {
         Parent maintenanceParent = (Parent) loader.load();
         Scene maintenanceScene = new Scene(maintenanceParent);       
         mainApplication.primaryStage.setScene(maintenanceScene);
+    try {
+            Connection conn = dc.Connect();
+
+            Maindata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase");
+            //Statement st = conn.createStatement();
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Maindata.add(new MaintenanceTable(rs.getString(2), rs.getString(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        DamagedID.setCellValueFactory(new PropertyValueFactory<>("damID"));
+        DesID.setCellValueFactory(new PropertyValueFactory<>("desID"));
+
+        MainTableID.setItems(null);
+        MainTableID.setItems(Maindata);
     }
 
     //Method for drop down menu
@@ -565,4 +596,38 @@ public class TableViewController implements Initializable {
         Scene tableScene = new Scene(tableParent);
         mainApplication.primaryStage.setScene(tableScene);
     }
+    
+    private void ChangeSceneToUsingView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/UsingView.fxml"));
+        loader.setController(this);
+        Parent tableParent = (Parent) loader.load();
+        Scene tableScene = new Scene(tableParent);
+        mainApplication.primaryStage.setScene(tableScene);
+    }
+    
+    // Method for pushing "using" scene
+    public void openUsingView(ActionEvent event) throws IOException {
+        //ChangeSceneToUsingView();
+        try {
+            Connection conn = dc.Connect();
+
+            Usingdata = FXCollections.observableArrayList();
+            // Execute query and store result in a resultset
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM MainDatabase order by TimePutToChargeNumeric desc");
+            while (rs.next()) {
+                //get string from db,whichever way 
+                Usingdata.add(new UsingTable(rs.getString(2), rs.getDouble(4)));
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error" + ex);
+        }
+        usingEqID.setCellValueFactory(new PropertyValueFactory<>("urID"));
+        chargeUsingDateID.setCellValueFactory(new PropertyValueFactory<>("udID"));
+
+        usingTableID.setItems(null);
+        usingTableID.setItems(Usingdata);
+    }
 }
+
+

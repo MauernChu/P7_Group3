@@ -35,6 +35,7 @@ public class MainApplication extends Application {
         //Set the main application reference in the tableViewController
         TableViewController tableViewController = loader.getController();
         tableViewController.setMainApp(this);
+    
     }
     
     /**
