@@ -25,9 +25,20 @@ Table of content:
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
-#mainNav .button:hover{
+#mainNav .button:hover{ 
     -fx-background-color: 
-        grey;
+       #002b80;
+    -fx-background-insets: 0 0 -1 0,0,1;
+    -fx-background-radius: 5,5,4;
+    -fx-padding: 7 30 7 30;
+    -fx-text-fill: #242d35;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
+#mainNav .navButton:focused{
+    -fx-background-color: 
+        #002266;
     -fx-background-insets: 0 0 -1 0,0,1;
     -fx-background-radius: 5,5,4;
     -fx-padding: 7 30 7 30;
@@ -62,7 +73,7 @@ Table of content:
 }
 .updateButton:hover{
     -fx-background-color: 
-        grey;
+        #002b80;
     -fx-background-insets: 0 0 -1 0,0,1;
     -fx-background-radius: 5,5,4;
     -fx-padding: 7 30 7 30;
@@ -71,4 +82,5 @@ Table of content:
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
+
 

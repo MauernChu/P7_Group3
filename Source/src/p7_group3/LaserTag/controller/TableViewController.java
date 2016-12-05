@@ -121,7 +121,8 @@ public class TableViewController implements Initializable {
 
     //Method for loading database for CHARGING
     @FXML
-    public void loadDatabaseCharging(ActionEvent event) {
+    public void loadDatabaseCharging(ActionEvent event) throws IOException {
+        ChangeSceneToTableView();
         try {
             Connection conn = dc.Connect();
 
