@@ -17,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -31,6 +30,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.MainApplication;
 import p7_group3.LaserTag.database.EquipmentAccessDAO;
+import p7_group3.LaserTag.database.EquipmentDAO;
+import p7_group3.LaserTag.database.SqliteConnectionImpl;
 import p7_group3.LaserTag.model.MaintenanceTable;
 import p7_group3.LaserTag.model.UsingTable;
 
@@ -46,7 +47,10 @@ public class TableViewController implements Initializable {
 
     // Front page private variables
     private ObservableList<Table> data;
+    
+    //Database references
     private EquipmentAccessDAO dc; // Used by both front page and maintenance page
+    private EquipmentDAO equipmentDAO;
 
     // Maintenance page private variables 
     private ObservableList<MaintenanceTable> Maindata;
@@ -127,12 +131,10 @@ public class TableViewController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         dc = new EquipmentAccessDAO();
+        equipmentDAO = new EquipmentDAO(new SqliteConnectionImpl());
         loadDatabaseChargingAtStart();
-        
-
     }
     
-
     //Method for loading database for CHARGING
     @FXML
     public void loadDatabaseCharging(ActionEvent event) throws IOException {
