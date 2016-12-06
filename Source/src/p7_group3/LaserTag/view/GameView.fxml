@@ -20,16 +20,16 @@
          <children>
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
-                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadDatabaseCharging" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
+                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#chargingButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
                   <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Maintainance" />
-                  <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#openUsingView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Using" />
+                  <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#gameButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Game" />
                </children>
             </AnchorPane>
-            <TableView fx:id="usingTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
+            <TableView fx:id="equipmentTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
               <columns>
                   <TableColumn prefWidth="179.0" text="Equipment charged" />
-                  <TableColumn fx:id="usingEqID" prefWidth="190.0" text="Equipment ID" />
-                  <TableColumn fx:id="chargeUsingDateID" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
+                  <TableColumn fx:id="gameEquipmentID" prefWidth="190.0" text="Equipment ID" />
+                  <TableColumn fx:id="gamedateCharged" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
                   <TableColumn prefWidth="154.0" text="Statistics" />
                   <TableColumn prefWidth="111.0" text="maintenance" />
               </columns>
@@ -37,11 +37,11 @@
             <Button fx:id="updateButton" layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#areYouSurePopUp" prefHeight="31.0" prefWidth="132.0" styleClass="updateButton" text="Update" />
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
-                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="All equipment" />
-                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Guns" />
-                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Medical Boxes" />
-                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Game Controllers" />
-                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showSelectedNameOfEquipment" text="Domination Boxes" />
+                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showAllEquipment" text="All equipment" />
+                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showGuns" text="Guns" />
+                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedicBoxes" text="Medical Boxes" />
+                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showGameController" text="Game Controllers" />
+                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDominationBoxes" text="Domination Boxes" />
               </items>
                <font>
                   <Font name="System Bold" size="15.0" />

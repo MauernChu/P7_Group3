@@ -20,24 +20,24 @@
          <children>
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
-                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadDatabaseCharging" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
+                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="false" onAction="#chargingButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
                   <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Maintainance" />
-                  <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#loadDatabaseUsing" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Using" />
+                  <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#gameButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Game" />
                </children>
             </AnchorPane>
-            <TableView fx:id="MainTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
+            <TableView fx:id="maintenanceTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
               <columns>
-                  <TableColumn fx:id="DamagedID" prefWidth="190.0" text="Equipment ID" />
-                  <TableColumn fx:id="DesID" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
+                  <TableColumn fx:id="maintenanceEquipmentID" prefWidth="190.0" text="Equipment ID" />
+                  <TableColumn fx:id="maintenancedateCharged" minWidth="0.0" prefWidth="150.0" text="Date of charge" />
               </columns>
             </TableView>
             <Button fx:id="updateButton" layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#areYouSurePopUp" prefHeight="31.0" prefWidth="132.0" styleClass="updateButton" text="Update" />
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
-                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showSelectedNameOfEquipmentMaintenance" text="All equipment" />
+                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showAllEquipmentMaintenance" text="All equipment" />
                   <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showGunsMaintenance" text="Guns" />
-                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedicMaintenance" text="Medical Boxes" />
-                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showControllerMaintenance" text="Game Controllers" />
+                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedicBoxesMaintenance" text="Medical Boxes" />
+                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showGameControllerMaintenance" text="Game Controllers" />
                   <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDominationMaintenance" text="Domination Boxes" />
               </items>
                <font>
@@ -49,7 +49,6 @@
                   <Font name="System Italic" size="13.0" />
                </font></Label>
             <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
-            <Button id="loadMaintenance" layoutX="167.0" layoutY="530.0" mnemonicParsing="false" onAction="#loadDatabaseMaintenance" text="Load Database" />
          </children>
       </Pane>
    </children>

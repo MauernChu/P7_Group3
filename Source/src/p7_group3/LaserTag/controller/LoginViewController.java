@@ -24,7 +24,7 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
  */
 public class LoginViewController implements Initializable {
 
-    TableViewController tableViewController;
+    ChargingViewController chargingViewController;
     AdminAccessDAO adminAccessDao = new AdminAccessDAO(new SqliteConnectionImpl());
             
     /**
@@ -47,20 +47,19 @@ public class LoginViewController implements Initializable {
     @FXML
     private TextField txtPassword;
 
-    public void Login(ActionEvent event) throws IOException {
-        
+    public void loginButtonPushed(ActionEvent event) throws IOException {
         boolean canAccess = adminAccessDao.CanAccess(txtUserName.getText(), txtPassword.getText());
         
         if (canAccess == true) { //checks if the password and username matches UserNameDb and PasswordDb
             lblStatus.setText(""); //Connects to lblStatus button, and states the given text
             ((Node)(event.getSource())).getScene().getWindow().hide();
-            tableViewController.openMaintenanceView(event);
+            chargingViewController.loginButtonPushed(event);
         } else {
             lblStatus.setText("Login failed");
         }
     }
     
-    public void setTableViewController(TableViewController tableViewController) {
-        this.tableViewController = tableViewController;
+    public void setTableViewController(ChargingViewController tableViewController) {
+        this.chargingViewController = tableViewController;
     }
 }

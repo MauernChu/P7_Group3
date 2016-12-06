@@ -6,8 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import p7_group3.LaserTag.controller.TableViewController;
-import p7_group3.LaserTag.controller.TableViewControllerWithModels;
+import p7_group3.LaserTag.controller.ChargingViewController;
+
 
 /**
  *
@@ -22,11 +22,9 @@ public class MainApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/TableView.fxml"));
-        loader.setController(new TableViewController()); //making instance programmaticaaly (with out scenebuilder)
-        //making instance programmaticaaly (with out scenebuilder)
-        //because we know that we need this (the same) instance in multiple views (when we go from maintenance and back
-        //to tableview)
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/ChargingView.fxml"));
+        loader.setController(new ChargingViewController()); //Making an object of the ChargingViewController for the Charging/Game/Maintenance view manually.
+        //We use the same controller object for Charging/Game/Maintenance view and thats why we make the controller manually.
         Parent root = (Parent) loader.load();
         Scene homeScene = new Scene(root);
         primaryStage.getIcons().add(new Image("pictures/glove.png"));
@@ -35,10 +33,8 @@ public class MainApplication extends Application {
         primaryStage.show();
         
         //Set the main application reference in the tableViewController
-        TableViewController tableViewController = loader.getController();
-        tableViewController.setMainApp(this);
-        //TableViewControllerWithModels tableViewController = loader.getController();
-        //tableViewController.setMainApp(this);
+        ChargingViewController chargingViewController = loader.getController();
+        chargingViewController.setMainApp(this);
     }
     
     /**

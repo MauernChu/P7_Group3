@@ -27,20 +27,49 @@ public class EquipmentDAO {
         this.dbConnection = dbConnection;
     }
 
-    public ArrayList<Equipment> GetAllEquipments() {
-
+    public ArrayList<Equipment> GetAllEquipment() {
+        final String sql = "SELECT * FROM MainDatabase order by TimePutToChargeNumeric asc";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllGuns() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%'";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllMedicBoxes() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%'";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllGameControllers() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%'");
+        
+        return GetBySqlSearchString(sql); 
+    }
+    
+    public ArrayList<Equipment> GetAllDominationBoxes() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%'");
+        
+        return GetBySqlSearchString(sql); 
+    }
+     
+    private ArrayList<Equipment> GetBySqlSearchString(String sql) { 
         ArrayList<Equipment> equipments = new ArrayList<Equipment>();
 
         Statement stmt = null;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase order by TimePutToChargeNumeric asc");
+            ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                equipments.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance));
+                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,6 +77,8 @@ public class EquipmentDAO {
         
         return equipments;
     }
+    
+    
 
 }
 
