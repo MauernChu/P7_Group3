@@ -16,7 +16,7 @@
         <URL value="@fxml.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="14.0" prefHeight="600.0" prefWidth="811.0">
+      <Pane layoutX="7.0" prefHeight="600.0" prefWidth="811.0">
          <children>
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
@@ -25,7 +25,7 @@
                   <Button fx:id="usingButton" layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#gameButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="currentButton" text="Game" />
                </children>
             </AnchorPane>
-            <TableView fx:id="equipmentTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
+            <TableView fx:id="gameTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
               <columns>
                   <TableColumn prefWidth="179.0" text="Equipment charged" />
                   <TableColumn fx:id="gameEquipmentID" prefWidth="190.0" text="Equipment ID" />
@@ -37,11 +37,11 @@
             <Button fx:id="updateButton" layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#areYouSurePopUp" prefHeight="31.0" prefWidth="132.0" styleClass="updateButton" text="Update" />
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
-                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showAllEquipment" text="All equipment" />
-                  <MenuItem fx:id="guns" mnemonicParsing="false" onAction="#showGuns" text="Guns" />
-                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedicBoxes" text="Medical Boxes" />
-                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showGameController" text="Game Controllers" />
-                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDominationBoxes" text="Domination Boxes" />
+                <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showAllEquipmentGame" text="All equipment" />
+                  <MenuItem fx:id="showGunsGame" mnemonicParsing="false" onAction="#showGunsGame" text="Guns" />
+                  <MenuItem fx:id="medicalBoxes" mnemonicParsing="false" onAction="#showMedicBoxesGame" text="Medical Boxes" />
+                  <MenuItem fx:id="gameControllers" mnemonicParsing="false" onAction="#showGameControllerGame" text="Game Controllers" />
+                  <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDominationBoxesGame" text="Domination Boxes" />
               </items>
                <font>
                   <Font name="System Bold" size="15.0" />

@@ -63,9 +63,15 @@ Table of content:
 
 /* 3 Table styling */
 .highlightedRow{
-     -fx-background-color:#de1515;
+     -fx-background-color:#ffeb99;
      -fx-font-weight:bold;
 }
+
+.highlightedRowGame{
+     -fx-background-color:#b3e6b3;
+     -fx-font-weight:bold;
+}
+
 
 .table-row-cell{
     -fx-border-color:lightgray;

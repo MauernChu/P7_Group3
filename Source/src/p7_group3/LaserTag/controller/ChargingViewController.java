@@ -45,6 +45,13 @@ public class ChargingViewController implements Initializable {
     private ObservableList<Equipment> medicBoxList;
     private ObservableList<Equipment> gameControllerList;
     private ObservableList<Equipment> dominationBoxList;
+    
+    //
+    private ObservableList<Equipment> gameEquipmentList;
+    private ObservableList<Equipment> gameGunList;
+    private ObservableList<Equipment> gameMedicBoxList;
+    private ObservableList<Equipment> gameGameControllerList;
+    private ObservableList<Equipment> gameDominationBoxList;
 
     // Maintenance page private variables 
     private ObservableList<Equipment> maintenanceEquipmentList;
@@ -54,7 +61,7 @@ public class ChargingViewController implements Initializable {
     private ObservableList<Equipment> maintenanceDominationBoxList;
 
     // Game  page private variables 
-    private ObservableList<Equipment> gameEquipmentList;
+  
 
     //Database references for Equipment
     private EquipmentDAO equipmentDAO;
@@ -196,8 +203,10 @@ public class ChargingViewController implements Initializable {
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
 
-        equipmentTableID.setItems(null);
-        equipmentTableID.setItems(gameEquipmentList);
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameEquipmentList);
+        
+        updateColorGame();
     }
 
     // Method for pushing maintenance button and login view
@@ -262,6 +271,18 @@ public class ChargingViewController implements Initializable {
         equipmentTableID.setItems(equipmentList);
     }
     
+    @FXML
+    public void showAllEquipmentGame(ActionEvent event) throws IOException {
+        gameEquipmentList = FXCollections.observableArrayList();
+        gameEquipmentList.addAll(gameDAO.GetGameEquipment());
+
+        gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameEquipmentList);
+    }
+    
      @FXML
     public void showAllEquipmentMaintenance(ActionEvent even) throws IOException {
         maintenanceEquipmentList = FXCollections.observableArrayList();
@@ -285,6 +306,19 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gunList);
+    }
+    
+    @FXML
+    public void showGunsGame(ActionEvent event) throws IOException {
+        gameGunList = FXCollections.observableArrayList();
+        gameGunList.addAll(equipmentDAO.GetAllGuns());
+
+        gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameGunList);
+       
     }
 
     //Method for loading GUNS ONLY IN MAINTENANCE
@@ -312,6 +346,18 @@ public class ChargingViewController implements Initializable {
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(medicBoxList);
     }
+    
+    @FXML
+    public void showMedicBoxesGame(ActionEvent event) throws IOException {
+        gameMedicBoxList = FXCollections.observableArrayList();
+        gameMedicBoxList.addAll(equipmentDAO.GetAllMedicBoxes());
+
+        gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameMedicBoxList);
+    }
 
     //Method for loading MEDIC BOXES ONLY IN MAINTENANCE
     @FXML
@@ -337,6 +383,18 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gameControllerList);
+    }
+    
+    @FXML
+    public void showGameControllerGame(ActionEvent event) throws IOException {
+        gameGameControllerList = FXCollections.observableArrayList();
+        gameGameControllerList.addAll(equipmentDAO.GetAllGameControllers());
+
+        gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameGameControllerList);
     }
 
     //Method for loading GAME CONTROLLER ONLY IN MAINTENANCE
@@ -365,6 +423,18 @@ public class ChargingViewController implements Initializable {
         equipmentTableID.setItems(dominationBoxList);
     }
 
+    @FXML
+    public void showDominationBoxesGame(ActionEvent event) throws IOException {
+        gameDominationBoxList = FXCollections.observableArrayList();
+        gameDominationBoxList.addAll(equipmentDAO.GetAllDominationBoxes());
+
+        gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+
+        gameTableID.setItems(null);
+        gameTableID.setItems(gameDominationBoxList);
+    }
+    
     //Method for loading DOMINATION BOXES ONLY IN MAINTENANCE
     @FXML
     public void showDominationMaintenance(ActionEvent event) throws IOException {
@@ -445,6 +515,42 @@ public class ChargingViewController implements Initializable {
         
     }
     }
+     
+    public void updateColorGame() {
+        gameTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
+            @Override
+            public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
+                return new TableRowColorGameFormat();
+            }
+        });
+    }
+
+        private class TableRowColorGameFormat extends TableRow {
+
+            @Override
+            protected void updateItem(Object o, boolean b) {
+                super.updateItem(o, b);
+
+                if (o == null) {
+                    getStyleClass().remove("highlightedRowGame");
+                    return;
+                }
+                if (o.getClass() == Equipment.class) {
+                    Equipment Equipment = (Equipment) o;
+
+                    getStyleClass().remove("highlightedRowGame");
+                    long DAY_IN_MS = 1000 * 60 * 60 * 24;
+                    Date expireDate = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
+                    if (Equipment.getChargingStatus().getDateCharged().after(expireDate)) {
+
+                        getStyleClass().add("highlightedRowGame");
+
+                    }
+                }
+                return;
+            }
+        }
+
 
     /**
      * Is called by the main application to give a reference back to itself.
