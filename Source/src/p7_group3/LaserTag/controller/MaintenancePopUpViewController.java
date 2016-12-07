@@ -22,6 +22,8 @@ import javafx.stage.Stage;
  */
 public class MaintenancePopUpViewController implements Initializable {
 
+    private ChargingViewController chargingViewController;
+    
     /**
      * Initializes the controller class.
      */
@@ -63,4 +65,8 @@ public class MaintenancePopUpViewController implements Initializable {
         defineProblem.setText(menu.getText());
 
     }
+    public void setChargingViewController(ChargingViewController tableViewController) {
+        this.chargingViewController = tableViewController;
+    }
+
 }

@@ -19,9 +19,12 @@ import javafx.stage.Stage;
  */
 public class AreYouSureViewController implements Initializable {
 
+    private ChargingViewController chargingViewController;
+        
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -45,6 +48,9 @@ public class AreYouSureViewController implements Initializable {
         Stage stage = (Stage) noButton.getScene().getWindow();
         stage.close();
     }
-
+    
+    public void setChargingViewController(ChargingViewController tableViewController) {
+        this.chargingViewController = tableViewController;
+    }
 
 }

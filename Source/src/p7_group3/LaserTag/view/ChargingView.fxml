@@ -20,7 +20,7 @@
          <children>
             <AnchorPane id="mainNav" layoutX="13.0" layoutY="14.0" prefHeight="49.0" prefWidth="785.0">
                <children>
-                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="true" onAction="#chargingButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Charging" />
+                <Button fx:id="chargingButton" layoutX="14.0" layoutY="9.0" mnemonicParsing="true" onAction="#chargingButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="currentButton" text="Charging" />
                   <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="639.0" layoutY="9.0" mnemonicParsing="false" onAction="#openLoginView" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Maintainance" />
                   <Button layoutX="170.0" layoutY="9.0" mnemonicParsing="false" onAction="#gameButtonPushed" prefHeight="31.0" prefWidth="132.0" styleClass="navButton" text="Game" />
                </children>

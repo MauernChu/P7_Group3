@@ -30,6 +30,7 @@ public class MainApplication extends Application {
         primaryStage.getIcons().add(new Image("pictures/glove.png"));
         primaryStage.setTitle("Laser-tag application");
         primaryStage.setScene(homeScene);
+        primaryStage.setResizable(false);
         primaryStage.show();
         
         //Set the main application reference in the tableViewController

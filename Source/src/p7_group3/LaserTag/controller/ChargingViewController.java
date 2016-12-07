@@ -380,25 +380,35 @@ public class ChargingViewController implements Initializable {
 
     //Method for "Are you sure?" pop up window
     public void areYouSurePopUp(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AreYouSureView.fxml"));
-        Scene sureScene = new Scene(root);
-        stage.getIcons().add(new Image("pictures/glove.png"));
-        stage.setTitle("Laser-tag application");
-        stage.setScene(sureScene);
-        stage.show();
-    }
-
-    //Method for sendToMaintenance pop up window
-    public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AreYouSureView.fxml"));
+        Parent root = (Parent) loader.load();
         Scene scene = new Scene(root);
+        Stage stage = new Stage();
         stage.getIcons().add(new Image("pictures/glove.png"));
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        AreYouSureViewController areYouSureViewController = loader.getController();
+        areYouSureViewController.setChargingViewController(this);
     }
+
+
+    //Method for sendToMaintenance pop up window
+    public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        MaintenancePopUpViewController maintenancePopUpViewController = loader.getController();
+        maintenancePopUpViewController.setChargingViewController(this);
+    }
+
     
     
     public void updateColor(){
@@ -425,7 +435,7 @@ public class ChargingViewController implements Initializable {
                     getStyleClass().remove("highlightedRow");
                     long DAY_IN_MS = 1000 * 60 * 60 * 24;
                     Date expireDate = new Date(System.currentTimeMillis()-(1 * DAY_IN_MS)); 
-            if (Equipment.getChargingStatus().getDateCharged().after(expireDate)){
+            if (Equipment.getChargingStatus().getDateCharged().before(expireDate)){
 
                         getStyleClass().add("highlightedRow");
                 
