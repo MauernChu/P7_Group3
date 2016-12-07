@@ -56,6 +56,14 @@ Table of content:
 /* 2 Dropdown styling */
 
 /* 3 Table styling */
+.highlightedRow{
+     -fx-background-color:#de1515;
+     -fx-font-weight:bold;
+}
+
+.table-row-cell{
+    -fx-border-color:lightgray;
+}
 
 /* 4 Update button styling */
 .updateButton{

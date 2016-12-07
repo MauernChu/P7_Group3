@@ -5,6 +5,8 @@
  */
 package p7_group3.LaserTag.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Mette
@@ -22,6 +24,7 @@ public class Equipment {
         this.maintenance = maintenance;
     }
 
+    
     public int getId() {
         return id;
     }

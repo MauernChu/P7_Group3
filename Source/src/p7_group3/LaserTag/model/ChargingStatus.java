@@ -6,6 +6,7 @@
 package p7_group3.LaserTag.model;
 
 import java.util.Date;
+import java.sql.Time;
 
 /**
  *
@@ -14,9 +15,17 @@ import java.util.Date;
 public class ChargingStatus {
     
     private Date dateCharged;
+    public double time; 
 
     public ChargingStatus(Date dateCharged) {
+        time = dateCharged.getTime();
+        this.time = time;
         this.dateCharged = dateCharged;
+        
+    }
+    
+    public double getTime() {
+        return time;
     }
 
     public Date getDateCharged() {

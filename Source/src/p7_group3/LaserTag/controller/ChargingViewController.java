@@ -3,6 +3,8 @@ package p7_group3.LaserTag.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+//import java.util.Date;
+import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
@@ -18,9 +20,12 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import p7_group3.LaserTag.MainApplication;
 import p7_group3.LaserTag.database.AdminAccessDAO;
 import p7_group3.LaserTag.database.EquipmentDAO;
@@ -63,7 +68,10 @@ public class ChargingViewController implements Initializable {
     //Database reference for userName and password
     private AdminAccessDAO adminAccessDAO;
 
-// Define table for charging view
+    // Variables for storing row colors 
+    Equipment color;
+
+    // Define table for charging view
     @FXML
     TableView<Equipment> equipmentTableID;
     @FXML
@@ -158,9 +166,10 @@ public class ChargingViewController implements Initializable {
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
-
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(equipmentList);
+        updateColor();
+        
     }
 
     //Changing scene to game scene and loading database in game View 
@@ -389,6 +398,42 @@ public class ChargingViewController implements Initializable {
         stage.setTitle("Laser-tag application");
         stage.setScene(scene);
         stage.show();
+    }
+    
+    
+    public void updateColor(){
+    equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
+            @Override
+            public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
+                return new TableRowColorFormat();
+            }
+        });
+    }
+    
+     private class TableRowColorFormat extends TableRow {
+    @Override
+    protected void updateItem(Object o, boolean b) {
+        super.updateItem(o, b);
+
+        if(o == null) {
+            getStyleClass().remove("highlightedRow");
+            return;
+        }
+        if (o.getClass() == Equipment.class) {
+            Equipment Equipment = (Equipment) o;
+
+                    getStyleClass().remove("highlightedRow");
+                    long DAY_IN_MS = 1000 * 60 * 60 * 24;
+                    Date expireDate = new Date(System.currentTimeMillis()-(1 * DAY_IN_MS)); 
+            if (Equipment.getChargingStatus().getDateCharged().after(expireDate)){
+
+                        getStyleClass().add("highlightedRow");
+                
+            }
+        }
+        return;
+        
+    }
     }
 
     /**
