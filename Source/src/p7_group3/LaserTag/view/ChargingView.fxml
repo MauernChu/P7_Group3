@@ -30,8 +30,6 @@
                   <TableColumn editable="false" prefWidth="179.0" sortable="false" text="Equipment charged" />
                   <TableColumn fx:id="equipmentID" editable="false" prefWidth="190.0" sortable="false" text="Equipment ID" />
                   <TableColumn fx:id="dateCharged" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Date of charge" />
-                  <TableColumn editable="false" minWidth="0.0" prefWidth="150.0" text="DateNumeric" />
-                  <TableColumn editable="false" prefWidth="154.0" sortable="false" text="Statistics" />
                   <TableColumn prefWidth="111.0" text="maintenance" />
               </columns>
             </TableView>
@@ -53,6 +51,11 @@
                   <Font name="System Italic" size="13.0" />
                </font></Label>
             <Button fx:id="sendToMaintenanceButton" layoutX="473.0" layoutY="119.0" mnemonicParsing="false" onAction="#sendToMaintenancePopUp" prefHeight="30.0" prefWidth="132.0" text="Send to maintenance" />
+            <Label layoutX="45.0" layoutY="84.0" prefHeight="74.0" prefWidth="244.0" text="Charging">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
