@@ -6,6 +6,7 @@
 package p7_group3.LaserTag.model;
 
 import java.sql.Date;
+import javafx.beans.property.SimpleBooleanProperty;
 
 /**
  *
@@ -16,12 +17,14 @@ public class Equipment {
     public String name;
     public ChargingStatus chargingStatus; //Nested class, lies under equipment.
     public Maintenance maintenance;
+    public SimpleBooleanProperty checkbox;
 
-    public Equipment(int id, String name, ChargingStatus chargingStatus, Maintenance maintenance) {
+    public Equipment(int id, String name, ChargingStatus chargingStatus, Maintenance maintenance, Boolean checkbox) {
         this.id = id;
         this.name = name;
         this.chargingStatus = chargingStatus;
         this.maintenance = maintenance;
+        this.checkbox = new SimpleBooleanProperty(checkbox);
     }
 
     
@@ -31,6 +34,14 @@ public class Equipment {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public Boolean getCheckbox() {
+        return checkbox.get();
+    }
+
+    public void setCheckbox(Boolean c) {
+        this.checkbox.setValue(c);
     }
 
     public String getName() {

@@ -27,7 +27,7 @@
             </AnchorPane>
             <TableView fx:id="equipmentTableID" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0" tableMenuButtonVisible="true">
               <columns>
-                  <TableColumn editable="false" prefWidth="179.0" sortable="false" text="Equipment charged" />
+                  <TableColumn fx:id="checkbox" editable="false" prefWidth="190.0" sortable="false" text="Select" />
                   <TableColumn fx:id="equipmentID" editable="false" prefWidth="190.0" sortable="false" text="Equipment ID" />
                   <TableColumn fx:id="dateCharged" editable="false" minWidth="0.0" prefWidth="150.0" sortable="false" text="Date of charge" />
                   <TableColumn prefWidth="111.0" text="maintenance" />

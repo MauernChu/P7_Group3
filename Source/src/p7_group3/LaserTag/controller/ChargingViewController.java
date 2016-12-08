@@ -6,22 +6,26 @@ import java.text.SimpleDateFormat;
 //import java.util.Date;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -85,6 +89,8 @@ public class ChargingViewController implements Initializable {
     TableColumn<Equipment, String> equipmentID;
     @FXML
     TableColumn<Equipment, String> dateCharged;
+    @FXML
+    TableColumn<Equipment, Boolean> checkbox;
 
     // Define table for game view
     @FXML
@@ -173,7 +179,25 @@ public class ChargingViewController implements Initializable {
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+        checkbox.setCellValueFactory(cellData -> cellData.getValue().checkbox);
+        
+       checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
+
+            public TableCell<Equipment, Boolean> call(TableColumn<Equipment, Boolean> p) {
+                return new CheckBoxTableCell<Equipment, Boolean>();
+            }
+
+        });
+        
         equipmentTableID.setItems(null);
+        
+        equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
+            @Override
+            public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
+                return new TableRowColorFormat();
+            }
+        });
+        
         equipmentTableID.setItems(equipmentList);
         updateColor();
         
@@ -550,7 +574,49 @@ public class ChargingViewController implements Initializable {
                 return;
             }
         }
+        
+        
+    //CheckBoxTableCell for creating a CheckBox in a table cell
+    public static class CheckBoxTableCell<S, T> extends TableCell<S, T> {
+        
+        private final CheckBox checkBox;
+        private ObservableValue<T> ov;
+        
+        public CheckBoxTableCell() {
+            this.checkBox = new CheckBox();
+            this.checkBox.setAlignment(Pos.CENTER);
+            
+           // Equipment.class.cast(ov);
+           // TableRow tr = this.getTableRow();
+            //int index = tr.getIndex();
+            //int index = 2;
+           // this.checkBox.selectedProperty().addListener(new RowCheckBoxChangeListener(index));
 
+            setAlignment(Pos.CENTER);
+            setGraphic(checkBox);
+
+        }
+
+        @Override
+        public void updateItem(T item, boolean empty) {
+            // call super class update method
+            super.updateItem(item, empty);
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                setGraphic(checkBox);
+                if (ov instanceof BooleanProperty) {
+                    checkBox.selectedProperty().unbindBidirectional((BooleanProperty) ov);
+                }
+                ov = getTableColumn().getCellObservableValue(getIndex());
+                if (ov instanceof BooleanProperty) {
+                    checkBox.selectedProperty().bindBidirectional((BooleanProperty) ov);
+                }
+            }
+
+        }
+    }
 
     /**
      * Is called by the main application to give a reference back to itself.
