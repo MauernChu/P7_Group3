@@ -18,13 +18,15 @@ public class Equipment {
     public ChargingStatus chargingStatus; //Nested class, lies under equipment.
     public Maintenance maintenance;
     public SimpleBooleanProperty checkbox;
+    public SimpleBooleanProperty maintenanceCheckbox;
 
-    public Equipment(int id, String name, ChargingStatus chargingStatus, Maintenance maintenance, Boolean checkbox) {
+    public Equipment(int id, String name, ChargingStatus chargingStatus, Maintenance maintenance, Boolean checkbox, Boolean maintenanceCheckbox) {
         this.id = id;
         this.name = name;
         this.chargingStatus = chargingStatus;
         this.maintenance = maintenance;
         this.checkbox = new SimpleBooleanProperty(checkbox);
+        this.maintenanceCheckbox = new SimpleBooleanProperty(maintenanceCheckbox);
     }
 
     
@@ -42,6 +44,14 @@ public class Equipment {
 
     public void setCheckbox(Boolean c) {
         this.checkbox.setValue(c);
+    }
+    
+    public Boolean getMaintenanceCheckbox() {
+        return checkbox.get();
+    }
+
+    public void setMaintenanceCheckbox(Boolean m) {
+        this.checkbox.setValue(m);
     }
 
     public String getName() {

@@ -31,12 +31,12 @@ public class GameDAO {
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase order by TimePutToChargeNumeric desc");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc");
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                gameEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9)));
+                gameEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);

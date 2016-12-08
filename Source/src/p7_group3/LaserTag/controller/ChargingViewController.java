@@ -181,7 +181,7 @@ public class ChargingViewController implements Initializable {
         dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
         checkbox.setCellValueFactory(cellData -> cellData.getValue().checkbox);
         
-       checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
+        checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
 
             public TableCell<Equipment, Boolean> call(TableColumn<Equipment, Boolean> p) {
                 return new CheckBoxTableCell<Equipment, Boolean>();
@@ -280,7 +280,8 @@ public class ChargingViewController implements Initializable {
     public void dropDownMenu(ActionEvent event) throws IOException {
         MenuButton m = new MenuButton("selectEquipment");
         m.getItems().addAll(new MenuItem("allEquipment"), new MenuItem("guns"), new MenuItem("medicalBoxes"), new MenuItem("gameControllers"), new MenuItem("dominationBoxes"));
-
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
     
     @FXML
@@ -293,6 +294,9 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(equipmentList);
+        
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
     
     @FXML
@@ -305,6 +309,9 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameEquipmentList);
+        
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
     
      @FXML
@@ -317,6 +324,9 @@ public class ChargingViewController implements Initializable {
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceEquipmentList);
+        
+        MenuItem menu = (MenuItem) even.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading GUNS ONLY IN MAIN SCREEN
@@ -330,6 +340,9 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gunList);
+        
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
     
     @FXML
@@ -356,6 +369,9 @@ public class ChargingViewController implements Initializable {
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceGunList);
+        
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading MEDIX BOXES ONLY IN MAIN SCREEN
@@ -394,6 +410,9 @@ public class ChargingViewController implements Initializable {
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceMedicBoxList);
+        
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading GAME CONTROLLER ONLY IN MAIN SCREEN

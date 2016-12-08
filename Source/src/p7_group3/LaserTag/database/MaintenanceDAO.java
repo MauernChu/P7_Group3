@@ -31,12 +31,12 @@ public class MaintenanceDAO {
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase WHERE Maintenance LIKE '%null%'");
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                brokenEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9)));
+                brokenEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);

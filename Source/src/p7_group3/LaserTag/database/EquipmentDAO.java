@@ -28,7 +28,7 @@ public class EquipmentDAO {
     }
 
     public ArrayList<Equipment> GetAllEquipment() {
-        final String sql = "SELECT * FROM MainDatabase order by TimePutToChargeNumeric asc";
+        final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc";
         
         return GetBySqlSearchString(sql);
     }
@@ -69,7 +69,7 @@ public class EquipmentDAO {
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9)));
+                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
