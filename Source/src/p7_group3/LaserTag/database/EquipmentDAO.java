@@ -79,13 +79,13 @@ public class EquipmentDAO {
     }
     
      public void GetBySqlSearchRead() { 
-       
+        //ArrayList<Equipment> equipmentTable = new ArrayList<Equipment>();
         Statement stmt = null;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime')");
-
+            int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime')");
+           // equipmentTable.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance));
            
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);

@@ -36,7 +36,7 @@ public class MaintenancePopUpViewController implements Initializable {
     private javafx.scene.control.Button submitButton;
 
     @FXML
-    private void submitButtonAction() {
+    public void submitButtonAction() {
         Stage stage = (Stage) submitButton.getScene().getWindow();
         stage.close();
     }
@@ -48,7 +48,7 @@ public class MaintenancePopUpViewController implements Initializable {
     private javafx.scene.control.Button cancleButton;
 
     @FXML
-    private void cancleButtonAction() {
+    public void cancleButtonAction() {
         Stage stage = (Stage) cancleButton.getScene().getWindow();
         stage.close();
     }

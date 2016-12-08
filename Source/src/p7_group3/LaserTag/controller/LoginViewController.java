@@ -39,7 +39,7 @@ public class LoginViewController implements Initializable {
     private Label lblStatus; //Creates variable connected to Scenebuilder through ID
 
     @FXML
-    private Label lblTitel;
+    public Label lblTitel;
 
     @FXML
     private TextField txtUserName;

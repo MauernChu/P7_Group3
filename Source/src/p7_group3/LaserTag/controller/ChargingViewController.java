@@ -73,7 +73,7 @@ public class ChargingViewController implements Initializable {
     private GameDAO gameDAO;
 
     //Database reference for userName and password
-    private AdminAccessDAO adminAccessDAO;
+    public AdminAccessDAO adminAccessDAO;
 
     // Variables for storing row colors 
     Equipment color;
@@ -111,32 +111,32 @@ public class ChargingViewController implements Initializable {
      */
     //Variables for Drop Down Menu SHARED BETWEEN ALL PAGES
     @FXML
-    private MenuButton selectEquipment;
+    public MenuButton selectEquipment;
     @FXML
-    private MenuItem allEquipment;
+    public MenuItem allEquipment;
     @FXML
-    private MenuItem guns;
+    public MenuItem guns;
     @FXML
-    private MenuItem medicalBoxes;
+    public MenuItem medicalBoxes;
     @FXML
-    private MenuItem gameControllers;
+    public MenuItem gameControllers;
     @FXML
-    private MenuItem dominationBoxes;
+    public MenuItem dominationBoxes;
 
     //Variables for pushing update button and open "Are you sure?" Pop up window
     @FXML
-    private Button updateButton;
+    public Button updateButton;
 
     //Variables for send to maintenance pop up
     @FXML
-    private Button sendToMaintenanceButton;
+    public Button sendToMaintenanceButton;
 
     //Variables for charging/game buttons
     @FXML
-    private Button gameButton;
+    public Button gameButton;
 
     @FXML
-    private Button chargingButton;
+    public Button chargingButton;
 
     // Initializes the controller class.
     // Creating new database objects

@@ -5,8 +5,10 @@
  */
 package p7_group3.LaserTag.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
@@ -23,7 +25,7 @@ public class AreYouSureViewController implements Initializable {
 
     private ChargingViewController chargingViewController;
         
-    private EquipmentDAO equipmentDAO;
+    public EquipmentDAO equipmentDAO;
    
     /**
      * Initializes the controller class.
@@ -39,7 +41,7 @@ public class AreYouSureViewController implements Initializable {
     private javafx.scene.control.Button yesButton;
 
     @FXML
-    private void yesButtonAction() {
+    public void yesButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) yesButton.getScene().getWindow();
         
         equipmentDAO.GetBySqlSearchRead();
@@ -53,7 +55,7 @@ public class AreYouSureViewController implements Initializable {
     private javafx.scene.control.Button noButton;
 
     @FXML
-    private void noButtonAction() {
+    public void noButtonAction() {
         Stage stage = (Stage) noButton.getScene().getWindow();
         stage.close();
     }
