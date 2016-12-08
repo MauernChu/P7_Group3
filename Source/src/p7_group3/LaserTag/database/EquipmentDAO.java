@@ -78,8 +78,22 @@ public class EquipmentDAO {
         return equipments;
     }
     
+     public void GetBySqlSearchRead() { 
+       
+        Statement stmt = null;
+
+        try {
+            stmt = dbConnection.createConnection().createStatement();
+            ResultSet rs = stmt.executeQuery("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime')");
+
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     
 
+}
 }
 
 

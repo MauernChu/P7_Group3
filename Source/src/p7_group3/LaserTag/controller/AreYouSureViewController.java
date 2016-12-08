@@ -9,8 +9,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
+import p7_group3.LaserTag.database.EquipmentDAO;
+import p7_group3.LaserTag.database.SqliteConnectionImpl;
+
 
 /**
  * FXML Controller class
@@ -21,12 +23,15 @@ public class AreYouSureViewController implements Initializable {
 
     private ChargingViewController chargingViewController;
         
+    private EquipmentDAO equipmentDAO;
+   
     /**
      * Initializes the controller class.
      */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        equipmentDAO = new EquipmentDAO(new SqliteConnectionImpl());
         // TODO
     }
     //when pushing yes button, the pop up window closes
@@ -36,6 +41,10 @@ public class AreYouSureViewController implements Initializable {
     @FXML
     private void yesButtonAction() {
         Stage stage = (Stage) yesButton.getScene().getWindow();
+        
+        equipmentDAO.GetBySqlSearchRead();
+        chargingViewController.loadDatabaseCharging();
+        
         stage.close();
     }
     

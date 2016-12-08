@@ -167,7 +167,7 @@ public class ChargingViewController implements Initializable {
     }
 
     //Loading database in charging View
-    private void loadDatabaseCharging() {
+    public void loadDatabaseCharging() {
         equipmentList = FXCollections.observableArrayList();
         equipmentList.addAll(equipmentDAO.GetAllEquipment());
 
