@@ -78,7 +78,6 @@ public class MaintenanceDAO {
     //
         public void GetProblemDescription(String damageDescription, String nameDiscoveredDamage, String problem) { 
         Statement stmt = null;
-        System.out.println(damageDescription);
         try {
             stmt = dbConnection.createConnection().createStatement();
            int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"'");

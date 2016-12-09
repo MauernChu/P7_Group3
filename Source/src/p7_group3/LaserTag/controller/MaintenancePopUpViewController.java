@@ -71,7 +71,6 @@ public class MaintenancePopUpViewController implements Initializable {
         Stage stage = (Stage) submitButton.getScene().getWindow();
         damageDescription = DamageDescription.getText();
         nameDiscoveredDamage = name.getText();
-        System.out.println(problem);
         maintenanceDAO.GetProblemDescription(damageDescription, nameDiscoveredDamage, problem);
         
         stage.close();
@@ -112,8 +111,8 @@ public class MaintenancePopUpViewController implements Initializable {
     
     public void CantTurnOn (ActionEvent event){
         DamageDescription.setText("Equipment cannot turn on");
-        defineProblem.setText("CantTurnOn");
-        problemText2.setText("Cant turn on");
+        defineProblem.setText("Cannot Turn On");
+        problemText2.setText("Cannot turn on");
         problem = problemText2.getText();
     };
     
