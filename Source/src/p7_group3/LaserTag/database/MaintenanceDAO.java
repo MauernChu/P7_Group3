@@ -64,7 +64,7 @@ public class MaintenanceDAO {
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
-                Maintenance maintenance = null;
+                Maintenance maintenance = new Maintenance (rs.getString(7), rs.getDate(11), rs.getString(8), rs.getString(12));
                 equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {

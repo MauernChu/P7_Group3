@@ -15,12 +15,33 @@ public class Maintenance {
     
     private String damageDescription;
     private Date dateBroken;
-    private Date dateRepaired;
+    private String nameDiscoverDamage;
+    private String damageDefinition;
+    
 
-    public Maintenance(String damageDescription, Date dateBroken, Date dateRepaired) {
+    public Maintenance(String damageDescription, Date dateBroken, String nameDiscoverDamage, String damageDefinition) {
         this.damageDescription = damageDescription;
         this.dateBroken = dateBroken;
-        this.dateRepaired = dateRepaired;
+        this.nameDiscoverDamage = nameDiscoverDamage;
+        this.damageDefinition = damageDefinition;
+        
+       
+    }
+
+    public String getNameDiscoverDamage() {
+        return nameDiscoverDamage;
+    }
+
+    public void setNameDiscoverDamage(String nameDiscoverDamage) {
+        this.nameDiscoverDamage = nameDiscoverDamage;
+    }
+
+    public String getDamageDefinition() {
+        return damageDefinition;
+    }
+
+    public void setDamageDefinition(String damageDefinition) {
+        this.damageDefinition = damageDefinition;
     }
 
     public String getDamageDescription() {
@@ -37,13 +58,5 @@ public class Maintenance {
 
     public void setDateBroken(Date dateBroken) {
         this.dateBroken = dateBroken;
-    }
-
-    public Date getDateRepaired() {
-        return dateRepaired;
-    }
-
-    public void setDateRepaired(Date dateRepaired) {
-        this.dateRepaired = dateRepaired;
     }
 }

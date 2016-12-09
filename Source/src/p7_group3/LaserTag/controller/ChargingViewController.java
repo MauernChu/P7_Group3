@@ -105,6 +105,14 @@ public class ChargingViewController implements Initializable {
     TableColumn<Equipment, String> maintenanceEquipmentID;
     @FXML
     TableColumn<Equipment, String> maintenancedateCharged;
+    @FXML
+    TableColumn<Equipment, String> maintenanceDamageDescription;
+    @FXML
+    TableColumn<Equipment, String> maintenanceDateBroken;
+    @FXML
+    TableColumn<Equipment, String> maintenanceNameDiscoveredDamage;
+    @FXML
+    TableColumn<Equipment, String> maintenanceDamageDefinition;
 
     /*@FXML
     TableColumn<Equipment, String> damageDescription;
@@ -268,7 +276,10 @@ public class ChargingViewController implements Initializable {
         maintenanceEquipmentList.addAll(maintenanceDAO.GetBrokenEquipment());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenanceDateBroken.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd").format(cellData.getValue().maintenance.getDateBroken())));
+        maintenanceNameDiscoveredDamage.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().maintenance.getNameDiscoverDamage())));
+        maintenanceDamageDefinition.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().maintenance.getDamageDefinition())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceEquipmentList);
