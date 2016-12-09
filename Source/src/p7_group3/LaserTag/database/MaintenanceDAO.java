@@ -74,5 +74,26 @@ public class MaintenanceDAO {
         return equipments;
     }
 
+    
+    //
+        public void GetProblemDescription(String s, String i, String problem) { 
+        Statement stmt = null;
+        System.out.println(s);
+        try {
+            stmt = dbConnection.createConnection().createStatement();
+           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+s+"'");
+           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+i+"'");
+           int rs2 = stmt.executeUpdate("UPDATE MainDatabase SET DamageDefinition = '"+problem+"'");
+           int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime')");
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+
+}
+    
+    
 }
 
