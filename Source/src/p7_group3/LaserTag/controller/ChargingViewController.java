@@ -346,7 +346,7 @@ public class ChargingViewController implements Initializable {
     @FXML
     public void showGunsGame(ActionEvent event) throws IOException {
         gameGunList = FXCollections.observableArrayList();
-        gameGunList.addAll(equipmentDAO.GetAllGuns());
+        gameGunList.addAll(gameDAO.GetAllGameGuns());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
@@ -393,7 +393,7 @@ public class ChargingViewController implements Initializable {
     @FXML
     public void showMedicBoxesGame(ActionEvent event) throws IOException {
         gameMedicBoxList = FXCollections.observableArrayList();
-        gameMedicBoxList.addAll(equipmentDAO.GetAllMedicBoxes());
+        gameMedicBoxList.addAll(gameDAO.GetAllGameMedicBoxes());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
@@ -440,7 +440,7 @@ public class ChargingViewController implements Initializable {
     @FXML
     public void showGameControllerGame(ActionEvent event) throws IOException {
         gameGameControllerList = FXCollections.observableArrayList();
-        gameGameControllerList.addAll(equipmentDAO.GetAllGameControllers());
+        gameGameControllerList.addAll(gameDAO.GetAllGameControllersGame());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
@@ -487,7 +487,7 @@ public class ChargingViewController implements Initializable {
     @FXML
     public void showDominationBoxesGame(ActionEvent event) throws IOException {
         gameDominationBoxList = FXCollections.observableArrayList();
-        gameDominationBoxList.addAll(equipmentDAO.GetAllDominationBoxes());
+        gameDominationBoxList.addAll(gameDAO.GetAllGameDominationBoxes());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));

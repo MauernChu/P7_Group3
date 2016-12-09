@@ -5,7 +5,6 @@
  */
 package p7_group3.LaserTag.database;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -31,35 +30,35 @@ public class EquipmentDAO {
     public ArrayList<Equipment> GetAllEquipment() {
         final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc";
 
-        return GetBySqlSearchString(sql);
+        return GetChargingEquipment(sql);
     }
 
     public ArrayList<Equipment> GetAllGuns() {
-        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%1%'";
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc";
 
-        return GetBySqlSearchString(sql);
+        return GetChargingEquipment(sql);
     }
 
     public ArrayList<Equipment> GetAllMedicBoxes() {
-        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%1%'";
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc";
 
-        return GetBySqlSearchString(sql);
+        return GetChargingEquipment(sql);
     }
 
     public ArrayList<Equipment> GetAllGameControllers() {
-        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%1%'");
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc");
 
-        return GetBySqlSearchString(sql);
+        return GetChargingEquipment(sql);
     }
 
     public ArrayList<Equipment> GetAllDominationBoxes() {
-        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%1%'");
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%1%'order by TimePutToChargeNumeric asc");
 
-        return GetBySqlSearchString(sql);
+        return GetChargingEquipment(sql);
     }
 
-    private ArrayList<Equipment> GetBySqlSearchString(String sql) {
-        ArrayList<Equipment> equipments = new ArrayList<Equipment>();
+    private ArrayList<Equipment> GetChargingEquipment(String sql) {
+        ArrayList<Equipment> equipments = new ArrayList<>();
 
         Statement stmt = null;
 

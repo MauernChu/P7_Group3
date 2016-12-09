@@ -22,16 +22,46 @@ public class GameDAO {
     public GameDAO(DbConnection dbConnection) {
         this.dbConnection = dbConnection;
     }
-
+    
     public ArrayList<Equipment> GetGameEquipment() {
+        final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc";
 
-        ArrayList<Equipment> gameEquipment = new ArrayList<Equipment>();
+        return GetGameEquipment(sql);
+    }
+
+    public ArrayList<Equipment> GetAllGameGuns() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc";
+
+        return GetGameEquipment(sql);
+    }
+
+    public ArrayList<Equipment> GetAllGameMedicBoxes() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc";
+
+        return GetGameEquipment(sql);
+    }
+
+    public ArrayList<Equipment> GetAllGameControllersGame() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc");
+
+        return GetGameEquipment(sql);
+    }
+
+    public ArrayList<Equipment> GetAllGameDominationBoxes() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%1%'order by TimePutToChargeNumeric desc");
+
+        return GetGameEquipment(sql);
+    }
+
+    public ArrayList<Equipment> GetGameEquipment(String sql) {
+
+        ArrayList<Equipment> gameEquipment = new ArrayList<>();
 
         Statement stmt = null;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric desc");
+            ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
@@ -44,5 +74,5 @@ public class GameDAO {
         
         return gameEquipment;
     }
-
+     
 }

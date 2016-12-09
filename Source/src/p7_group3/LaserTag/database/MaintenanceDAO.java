@@ -26,35 +26,35 @@ public class MaintenanceDAO {
     public ArrayList<Equipment> GetBrokenEquipment() {
         final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%null%' order by TimePutToChargeNumeric asc";
         
-        return GetBySqlSearchString(sql);
+        return GetMaintenanceEquipment(sql);
     }
     
     public ArrayList<Equipment> GetAllBrokenGuns() {
         final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%null%'";
         
-        return GetBySqlSearchString(sql);
+        return GetMaintenanceEquipment(sql);
     }
     
     public ArrayList<Equipment> GetAllBrokenMedicBoxes() {
         final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%null%'";
         
-        return GetBySqlSearchString(sql);
+        return GetMaintenanceEquipment(sql);
     }
     
     public ArrayList<Equipment> GetAllBrokenGameControllers() {
         final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%null%'");
         
-        return GetBySqlSearchString(sql); 
+        return GetMaintenanceEquipment(sql); 
     }
     
     public ArrayList<Equipment> GetAllBrokenDominationBoxes() {
         final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%null%'");
         
-        return GetBySqlSearchString(sql); 
+        return GetMaintenanceEquipment(sql); 
     }
      
-    private ArrayList<Equipment> GetBySqlSearchString(String sql) { 
-        ArrayList<Equipment> equipments = new ArrayList<Equipment>();
+    private ArrayList<Equipment> GetMaintenanceEquipment(String sql) { 
+        ArrayList<Equipment> equipments = new ArrayList<>();
 
         Statement stmt = null;
 
