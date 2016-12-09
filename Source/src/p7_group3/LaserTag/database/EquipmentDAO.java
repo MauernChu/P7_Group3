@@ -5,6 +5,7 @@
  */
 package p7_group3.LaserTag.database;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -29,35 +30,35 @@ public class EquipmentDAO {
 
     public ArrayList<Equipment> GetAllEquipment() {
         final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%1%' order by TimePutToChargeNumeric asc";
-        
+
         return GetBySqlSearchString(sql);
     }
-    
+
     public ArrayList<Equipment> GetAllGuns() {
-        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%'";
-        
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%1%'";
+
         return GetBySqlSearchString(sql);
     }
-    
+
     public ArrayList<Equipment> GetAllMedicBoxes() {
-        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%'";
-        
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%1%'";
+
         return GetBySqlSearchString(sql);
     }
-    
+
     public ArrayList<Equipment> GetAllGameControllers() {
-        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%'");
-        
-        return GetBySqlSearchString(sql); 
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%1%'");
+
+        return GetBySqlSearchString(sql);
     }
-    
+
     public ArrayList<Equipment> GetAllDominationBoxes() {
-        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%'");
-        
-        return GetBySqlSearchString(sql); 
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%1%'");
+
+        return GetBySqlSearchString(sql);
     }
-     
-    private ArrayList<Equipment> GetBySqlSearchString(String sql) { 
+
+    private ArrayList<Equipment> GetBySqlSearchString(String sql) {
         ArrayList<Equipment> equipments = new ArrayList<Equipment>();
 
         Statement stmt = null;
@@ -74,26 +75,22 @@ public class EquipmentDAO {
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return equipments;
     }
-    
-     public void GetBySqlSearchRead() { 
+
+    public void GetBySqlSearchRead() {
         //ArrayList<Equipment> equipmentTable = new ArrayList<Equipment>();
         Statement stmt = null;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
             int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime')");
-           // equipmentTable.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance));
-           
+            // equipmentTable.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance));
+
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-    
 
+    }
 }
-}
-
-

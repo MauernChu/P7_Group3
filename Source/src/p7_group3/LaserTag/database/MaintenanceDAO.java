@@ -24,25 +24,54 @@ public class MaintenanceDAO {
     }
 
     public ArrayList<Equipment> GetBrokenEquipment() {
-
-        ArrayList<Equipment> brokenEquipment = new ArrayList<Equipment>();
+        final String sql = "SELECT * FROM MainDatabase WHERE Maintenance LIKE '%null%' order by TimePutToChargeNumeric asc";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllBrokenGuns() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%GU%' AND Maintenance LIKE '%null%'";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllBrokenMedicBoxes() {
+        final String sql = "SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%MED%' AND Maintenance LIKE '%null%'";
+        
+        return GetBySqlSearchString(sql);
+    }
+    
+    public ArrayList<Equipment> GetAllBrokenGameControllers() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%CO%' AND Maintenance LIKE '%null%'");
+        
+        return GetBySqlSearchString(sql); 
+    }
+    
+    public ArrayList<Equipment> GetAllBrokenDominationBoxes() {
+        final String sql = ("SELECT * FROM MainDatabase WHERE EquipmentID LIKE '%DO%' AND Maintenance LIKE '%null%'");
+        
+        return GetBySqlSearchString(sql); 
+    }
+     
+    private ArrayList<Equipment> GetBySqlSearchString(String sql) { 
+        ArrayList<Equipment> equipments = new ArrayList<Equipment>();
 
         Statement stmt = null;
 
         try {
             stmt = dbConnection.createConnection().createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM MainDatabase WHERE Maintenance LIKE '%null%'");
+            ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                brokenEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
+                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return brokenEquipment;
+        return equipments;
     }
 
 }

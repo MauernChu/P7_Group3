@@ -46,13 +46,14 @@ public class Equipment {
         this.checkbox.setValue(c);
     }
     
-    public Boolean getMaintenanceCheckbox() {
+       public Boolean getMaintenanceCheckbox() {
         return checkbox.get();
     }
 
     public void setMaintenanceCheckbox(Boolean m) {
         this.checkbox.setValue(m);
     }
+    
 
     public String getName() {
         return name;

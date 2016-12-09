@@ -49,7 +49,7 @@ public class ChargingViewController implements Initializable {
     private ObservableList<Equipment> medicBoxList;
     private ObservableList<Equipment> gameControllerList;
     private ObservableList<Equipment> dominationBoxList;
-    
+
     //
     private ObservableList<Equipment> gameEquipmentList;
     private ObservableList<Equipment> gameGunList;
@@ -65,8 +65,6 @@ public class ChargingViewController implements Initializable {
     private ObservableList<Equipment> maintenanceDominationBoxList;
 
     // Game  page private variables 
-  
-
     //Database references for Equipment
     private EquipmentDAO equipmentDAO;
 
@@ -180,7 +178,7 @@ public class ChargingViewController implements Initializable {
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
         checkbox.setCellValueFactory(cellData -> cellData.getValue().checkbox);
-        
+
         checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
 
             public TableCell<Equipment, Boolean> call(TableColumn<Equipment, Boolean> p) {
@@ -188,19 +186,19 @@ public class ChargingViewController implements Initializable {
             }
 
         });
-        
+
         equipmentTableID.setItems(null);
-        
+
         equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
             @Override
             public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
                 return new TableRowColorFormat();
             }
         });
-        
+
         equipmentTableID.setItems(equipmentList);
         updateColor();
-        
+
     }
 
     //Changing scene to game scene and loading database in game View 
@@ -229,7 +227,7 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameEquipmentList);
-        
+
         updateColorGame();
     }
 
@@ -283,7 +281,7 @@ public class ChargingViewController implements Initializable {
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
-    
+
     @FXML
     public void showAllEquipment(ActionEvent event) throws IOException {
         equipmentList = FXCollections.observableArrayList();
@@ -294,11 +292,11 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(equipmentList);
-        
+
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
-    
+
     @FXML
     public void showAllEquipmentGame(ActionEvent event) throws IOException {
         gameEquipmentList = FXCollections.observableArrayList();
@@ -309,12 +307,12 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameEquipmentList);
-        
+
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
-    
-     @FXML
+
+    @FXML
     public void showAllEquipmentMaintenance(ActionEvent even) throws IOException {
         maintenanceEquipmentList = FXCollections.observableArrayList();
         maintenanceEquipmentList.addAll(maintenanceDAO.GetBrokenEquipment());
@@ -324,7 +322,7 @@ public class ChargingViewController implements Initializable {
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceEquipmentList);
-        
+
         MenuItem menu = (MenuItem) even.getSource();
         selectEquipment.setText(menu.getText());
     }
@@ -340,11 +338,11 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gunList);
-        
+
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
-    
+
     @FXML
     public void showGunsGame(ActionEvent event) throws IOException {
         gameGunList = FXCollections.observableArrayList();
@@ -355,21 +353,23 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameGunList);
-       
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading GUNS ONLY IN MAINTENANCE
     @FXML
     public void showGunsMaintenance(ActionEvent event) throws IOException {
         maintenanceGunList = FXCollections.observableArrayList();
-        maintenanceGunList.addAll(equipmentDAO.GetAllGuns());
+        maintenanceGunList.addAll(maintenanceDAO.GetAllBrokenGuns());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceGunList);
-        
+
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
@@ -385,8 +385,11 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(medicBoxList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
-    
+
     @FXML
     public void showMedicBoxesGame(ActionEvent event) throws IOException {
         gameMedicBoxList = FXCollections.observableArrayList();
@@ -397,20 +400,23 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameMedicBoxList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading MEDIC BOXES ONLY IN MAINTENANCE
     @FXML
     public void showMedicBoxesMaintenance(ActionEvent event) throws IOException {
         maintenanceMedicBoxList = FXCollections.observableArrayList();
-        maintenanceMedicBoxList.addAll(equipmentDAO.GetAllMedicBoxes());
+        maintenanceMedicBoxList.addAll(maintenanceDAO.GetAllBrokenMedicBoxes());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceMedicBoxList);
-        
+
         MenuItem menu = (MenuItem) event.getSource();
         selectEquipment.setText(menu.getText());
     }
@@ -426,8 +432,11 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gameControllerList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
-    
+
     @FXML
     public void showGameControllerGame(ActionEvent event) throws IOException {
         gameGameControllerList = FXCollections.observableArrayList();
@@ -438,19 +447,25 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameGameControllerList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading GAME CONTROLLER ONLY IN MAINTENANCE
     @FXML
     public void showGameControllerMaintenance(ActionEvent event) throws IOException {
         maintenanceGameControllerList = FXCollections.observableArrayList();
-        maintenanceGameControllerList.addAll(equipmentDAO.GetAllGameControllers());
+        maintenanceGameControllerList.addAll(maintenanceDAO.GetAllBrokenGameControllers());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceGameControllerList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for loading DOMINATION BOXES ONLY IN MAIN SCREEN
@@ -464,6 +479,9 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(dominationBoxList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     @FXML
@@ -476,19 +494,25 @@ public class ChargingViewController implements Initializable {
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameDominationBoxList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
-    
+
     //Method for loading DOMINATION BOXES ONLY IN MAINTENANCE
     @FXML
     public void showDominationMaintenance(ActionEvent event) throws IOException {
         maintenanceDominationBoxList = FXCollections.observableArrayList();
-        maintenanceDominationBoxList.addAll(equipmentDAO.GetAllDominationBoxes());
+        maintenanceDominationBoxList.addAll(maintenanceDAO.GetAllBrokenDominationBoxes());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
         maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceDominationBoxList);
+
+        MenuItem menu = (MenuItem) event.getSource();
+        selectEquipment.setText(menu.getText());
     }
 
     //Method for "Are you sure?" pop up window
@@ -506,7 +530,7 @@ public class ChargingViewController implements Initializable {
         areYouSureViewController.setChargingViewController(this);
     }
 
-
+    
     //Method for sendToMaintenance pop up window
     public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
@@ -522,43 +546,42 @@ public class ChargingViewController implements Initializable {
         maintenancePopUpViewController.setChargingViewController(this);
     }
 
-    
-    
-    public void updateColor(){
-    equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
+    public void updateColor() {
+        equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
             @Override
             public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
                 return new TableRowColorFormat();
             }
         });
     }
-    
-     private class TableRowColorFormat extends TableRow {
-    @Override
-    protected void updateItem(Object o, boolean b) {
-        super.updateItem(o, b);
 
-        if(o == null) {
-            getStyleClass().remove("highlightedRow");
-            return;
-        }
-        if (o.getClass() == Equipment.class) {
-            Equipment Equipment = (Equipment) o;
+    private class TableRowColorFormat extends TableRow {
 
-                    getStyleClass().remove("highlightedRow");
-                    long DAY_IN_MS = 1000 * 60 * 60 * 24;
-                    Date expireDate = new Date(System.currentTimeMillis()-(1 * DAY_IN_MS)); 
-            if (Equipment.getChargingStatus().getDateCharged().before(expireDate)){
+        @Override
+        protected void updateItem(Object o, boolean b) {
+            super.updateItem(o, b);
 
-                        getStyleClass().add("highlightedRow");
-                
+            if (o == null) {
+                getStyleClass().remove("highlightedRow");
+                return;
             }
+            if (o.getClass() == Equipment.class) {
+                Equipment Equipment = (Equipment) o;
+
+                getStyleClass().remove("highlightedRow");
+                long DAY_IN_MS = 1000 * 60 * 60 * 24;
+                Date expireDate = new Date(System.currentTimeMillis() - (1 * DAY_IN_MS));
+                if (Equipment.getChargingStatus().getDateCharged().before(expireDate)) {
+
+                    getStyleClass().add("highlightedRow");
+
+                }
+            }
+            return;
+
         }
-        return;
-        
     }
-    }
-     
+
     public void updateColorGame() {
         gameTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
             @Override
@@ -568,49 +591,47 @@ public class ChargingViewController implements Initializable {
         });
     }
 
-        private class TableRowColorGameFormat extends TableRow {
+    private class TableRowColorGameFormat extends TableRow {
 
-            @Override
-            protected void updateItem(Object o, boolean b) {
-                super.updateItem(o, b);
+        @Override
+        protected void updateItem(Object o, boolean b) {
+            super.updateItem(o, b);
 
-                if (o == null) {
-                    getStyleClass().remove("highlightedRowGame");
-                    return;
-                }
-                if (o.getClass() == Equipment.class) {
-                    Equipment Equipment = (Equipment) o;
-
-                    getStyleClass().remove("highlightedRowGame");
-                    long DAY_IN_MS = 1000 * 60 * 60 * 24;
-                    Date expireDate = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
-                    if (Equipment.getChargingStatus().getDateCharged().after(expireDate)) {
-
-                        getStyleClass().add("highlightedRowGame");
-
-                    }
-                }
+            if (o == null) {
+                getStyleClass().remove("highlightedRowGame");
                 return;
             }
+            if (o.getClass() == Equipment.class) {
+                Equipment Equipment = (Equipment) o;
+
+                getStyleClass().remove("highlightedRowGame");
+                long DAY_IN_MS = 1000 * 60 * 60 * 24;
+                Date expireDate = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
+                if (Equipment.getChargingStatus().getDateCharged().after(expireDate)) {
+
+                    getStyleClass().add("highlightedRowGame");
+
+                }
+            }
+            return;
         }
-        
-        
+    }
+
     //CheckBoxTableCell for creating a CheckBox in a table cell
     public static class CheckBoxTableCell<S, T> extends TableCell<S, T> {
-        
+
         private final CheckBox checkBox;
         private ObservableValue<T> ov;
-        
+
         public CheckBoxTableCell() {
             this.checkBox = new CheckBox();
             this.checkBox.setAlignment(Pos.CENTER);
-            
-           // Equipment.class.cast(ov);
-           // TableRow tr = this.getTableRow();
+
+            // Equipment.class.cast(ov);
+            // TableRow tr = this.getTableRow();
             //int index = tr.getIndex();
             //int index = 2;
-           // this.checkBox.selectedProperty().addListener(new RowCheckBoxChangeListener(index));
-
+            // this.checkBox.selectedProperty().addListener(new RowCheckBoxChangeListener(index));
             setAlignment(Pos.CENTER);
             setGraphic(checkBox);
 
