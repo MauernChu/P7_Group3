@@ -24,18 +24,18 @@
             <Font size="13.0" />
          </font>
       </Label>
-      <TextField id ="name" fx:id="name" layoutX="201.0" layoutY="86.0" prefHeight="34.0" prefWidth="267.0" promptText="Name" />
-      <TextField id="ProblemDescription" fx:id="ProblemDescription" alignment="TOP_LEFT" layoutX="201.0" layoutY="175.0" prefHeight="116.0" prefWidth="267.0" promptText="Enter problem description" />
+      <TextField id="name" fx:id="name" layoutX="201.0" layoutY="86.0" prefHeight="34.0" prefWidth="267.0" promptText="Name" />
+      <TextField id="ProblemDescription" fx:id="DamageDescription" alignment="TOP_LEFT" layoutX="201.0" layoutY="175.0" prefHeight="116.0" prefWidth="267.0" promptText="Enter problem description" />
       <Label layoutX="74.0" layoutY="134.0" prefHeight="25.0" prefWidth="109.0" text="Choose a problem" />
       <MenuButton fx:id="defineProblem" layoutX="201.0" layoutY="131.0" mnemonicParsing="false" onAction="#dropDownMenuForMaintenancePopUp" prefHeight="34.0" prefWidth="267.0" text="Define problem">
         <items>
-          <MenuItem id = "problemText" fx:id="problemText" mnemonicParsing="false" onAction="#Trigger" text="Trigger" />
-          <MenuItem id = "problemText1" fx:id="problemText1" mnemonicParsing="false" onAction="#Sensor" text="Sensor" />
-            <MenuItem id = "problemText2" fx:id="problemText2" mnemonicParsing="false" onAction="#CantTurnOn" text="Can't turn on" />
-            <MenuItem id = "problemText3" fx:id="problemText3" mnemonicParsing="false" onAction="#Other" text="Other" />
+          <MenuItem id="problemText" fx:id="problemText" mnemonicParsing="false" onAction="#Trigger" text="Trigger" />
+          <MenuItem id="problemText1" fx:id="problemText1" mnemonicParsing="false" onAction="#Sensor" text="Sensor" />
+            <MenuItem id="problemText2" fx:id="problemText2" mnemonicParsing="false" onAction="#CantTurnOn" text="Cannot turn on" />
+            <MenuItem id="problemText3" fx:id="problemText3" mnemonicParsing="false" onAction="#Other" text="Other" />
         </items>
       </MenuButton>
       <Button fx:id="submitButton" layoutX="201.0" layoutY="304.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="34.0" prefWidth="129.0" text="Submit" />
-      <Button fx:id="cancleButton" layoutX="339.0" layoutY="304.0" mnemonicParsing="false" onAction="#cancleButtonAction" prefHeight="34.0" prefWidth="129.0" text="Cancle" />
+      <Button fx:id="cancleButton" layoutX="339.0" layoutY="304.0" mnemonicParsing="false" onAction="#cancleButtonAction" prefHeight="34.0" prefWidth="129.0" text="Cancel" />
    </children>
 </AnchorPane>

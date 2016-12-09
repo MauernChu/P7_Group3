@@ -76,13 +76,13 @@ public class MaintenanceDAO {
 
     
     //
-        public void GetProblemDescription(String s, String i, String problem) { 
+        public void GetProblemDescription(String damageDescription, String nameDiscoveredDamage, String problem) { 
         Statement stmt = null;
-        System.out.println(s);
+        System.out.println(damageDescription);
         try {
             stmt = dbConnection.createConnection().createStatement();
-           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+s+"'");
-           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+i+"'");
+           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"'");
+           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+nameDiscoveredDamage+"'");
            int rs2 = stmt.executeUpdate("UPDATE MainDatabase SET DamageDefinition = '"+problem+"'");
            int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime')");
  

@@ -545,6 +545,21 @@ public class ChargingViewController implements Initializable {
         MaintenancePopUpViewController maintenancePopUpViewController = loader.getController();
         maintenancePopUpViewController.setChargingViewController(this);
     }
+    
+    //Method for AddEquipment pop up window
+    public void addEquipment(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AddEquipmentView.fxml"));
+        Parent root = (Parent) loader.load();
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.getIcons().add(new Image("pictures/glove.png"));
+        stage.setTitle("Laser-tag application");
+        stage.setScene(scene);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+        AddEquipmentViewController addEquipmentViewController = loader.getController();
+        addEquipmentViewController.setChargingViewController(this);
+    }
 
     public void updateColor() {
         equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {

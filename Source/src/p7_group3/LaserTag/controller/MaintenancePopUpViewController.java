@@ -7,11 +7,7 @@ package p7_group3.LaserTag.controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,8 +15,6 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import p7_group3.LaserTag.database.EquipmentDAO;
-import p7_group3.LaserTag.model.Maintenance;
 import p7_group3.LaserTag.database.MaintenanceDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
@@ -31,14 +25,14 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
  */
 public class MaintenancePopUpViewController implements Initializable {
 
-    private ChargingViewController chargingViewController;
+    public ChargingViewController chargingViewController;
     public MaintenanceDAO maintenanceDAO;
-    public String s;
-    public String i;
+    public String damageDescription;
+    public String nameDiscoveredDamage;
     public String problem;
     
     @FXML
-    public TextField ProblemDescription;
+    public TextField DamageDescription;
     
     @FXML
     public TextField name;
@@ -60,6 +54,8 @@ public class MaintenancePopUpViewController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -73,10 +69,10 @@ public class MaintenancePopUpViewController implements Initializable {
     @FXML
     public void submitButtonAction() {
         Stage stage = (Stage) submitButton.getScene().getWindow();
-        s = ProblemDescription.getText();
-        i = name.getText();
+        damageDescription = DamageDescription.getText();
+        nameDiscoveredDamage = name.getText();
         System.out.println(problem);
-        maintenanceDAO.GetProblemDescription(s, i, problem);
+        maintenanceDAO.GetProblemDescription(damageDescription, nameDiscoveredDamage, problem);
         
         stage.close();
     }
@@ -100,7 +96,7 @@ public class MaintenancePopUpViewController implements Initializable {
     }
     
     public void Trigger (ActionEvent event){
-        ProblemDescription.setText("Trigger cannot be pulled");
+        DamageDescription.setText("Trigger cannot be pulled");
         defineProblem.setText("Trigger");
         problemText.setText("Trigger");
         problem = problemText.getText();
@@ -108,21 +104,21 @@ public class MaintenancePopUpViewController implements Initializable {
     };
     
     public void Sensor (ActionEvent event){
-        ProblemDescription.setText("Sensor cannot track the laser beams");
+        DamageDescription.setText("Sensor cannot track the laser beams");
         defineProblem.setText("Sensor");
         problemText1.setText("Sensor");
         problem = problemText1.getText();
     };
     
     public void CantTurnOn (ActionEvent event){
-        ProblemDescription.setText("Equipment cannot turn on");
+        DamageDescription.setText("Equipment cannot turn on");
         defineProblem.setText("CantTurnOn");
         problemText2.setText("Cant turn on");
         problem = problemText2.getText();
     };
     
     public void Other (ActionEvent event){
-        ProblemDescription.setText("");
+        DamageDescription.setText("");
         defineProblem.setText("Other");
         problemText3.setText("Other");
         problem = problemText3.getText();
