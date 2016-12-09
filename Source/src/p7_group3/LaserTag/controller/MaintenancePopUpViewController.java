@@ -45,6 +45,15 @@ public class MaintenancePopUpViewController implements Initializable {
     
     @FXML
     public MenuItem problemText;
+    
+    @FXML
+    public MenuItem problemText1;
+    
+    @FXML
+    public MenuItem problemText2;
+    
+    @FXML
+    public MenuItem problemText3;
 
    
     
@@ -66,13 +75,13 @@ public class MaintenancePopUpViewController implements Initializable {
         Stage stage = (Stage) submitButton.getScene().getWindow();
         s = ProblemDescription.getText();
         i = name.getText();
-        problem = problemText.getText();
         System.out.println(problem);
         maintenanceDAO.GetProblemDescription(s, i, problem);
+        
         stage.close();
     }
     @FXML
-    private MenuButton defineProblem;
+    public MenuButton defineProblem;
 
     //when pushing Cancle button, the pop up window closes
     @FXML
@@ -91,27 +100,32 @@ public class MaintenancePopUpViewController implements Initializable {
     }
     
     public void Trigger (ActionEvent event){
-        ProblemDescription.setText("Trigger cant be pulled");
+        ProblemDescription.setText("Trigger cannot be pulled");
         defineProblem.setText("Trigger");
         problemText.setText("Trigger");
+        problem = problemText.getText();
 
     };
     
     public void Sensor (ActionEvent event){
-        ProblemDescription.setText("Sensor cant track the laser beams");
+        ProblemDescription.setText("Sensor cannot track the laser beams");
         defineProblem.setText("Sensor");
-        problemText.setText("Sensor");
+        problemText1.setText("Sensor");
+        problem = problemText1.getText();
     };
     
     public void CantTurnOn (ActionEvent event){
-        ProblemDescription.setText("Equipment cant turn on");
+        ProblemDescription.setText("Equipment cannot turn on");
         defineProblem.setText("CantTurnOn");
-        problemText.setText("Cant turn on");
+        problemText2.setText("Cant turn on");
+        problem = problemText2.getText();
     };
     
     public void Other (ActionEvent event){
+        ProblemDescription.setText("");
         defineProblem.setText("Other");
-        problemText.setText("Other");
+        problemText3.setText("Other");
+        problem = problemText3.getText();
     };
     
     //Method for showing the chosen equipment name in the drop down menu

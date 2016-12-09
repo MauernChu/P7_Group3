@@ -29,10 +29,10 @@
       <Label layoutX="74.0" layoutY="134.0" prefHeight="25.0" prefWidth="109.0" text="Choose a problem" />
       <MenuButton fx:id="defineProblem" layoutX="201.0" layoutY="131.0" mnemonicParsing="false" onAction="#dropDownMenuForMaintenancePopUp" prefHeight="34.0" prefWidth="267.0" text="Define problem">
         <items>
-          <MenuItem  mnemonicParsing="false" onAction="#Trigger" text="Trigger" />
-          <MenuItem mnemonicParsing="false" onAction="#Sensor" text="Sensor" />
-            <MenuItem mnemonicParsing="false" onAction="#CantTurnOn" text="Can't turn on" />
-            <MenuItem id = "problemText" fx:id="problemText" mnemonicParsing="false" onAction="#Other" text="Other" />
+          <MenuItem id = "problemText" fx:id="problemText" mnemonicParsing="false" onAction="#Trigger" text="Trigger" />
+          <MenuItem id = "problemText1" fx:id="problemText1" mnemonicParsing="false" onAction="#Sensor" text="Sensor" />
+            <MenuItem id = "problemText2" fx:id="problemText2" mnemonicParsing="false" onAction="#CantTurnOn" text="Can't turn on" />
+            <MenuItem id = "problemText3" fx:id="problemText3" mnemonicParsing="false" onAction="#Other" text="Other" />
         </items>
       </MenuButton>
       <Button fx:id="submitButton" layoutX="201.0" layoutY="304.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="34.0" prefWidth="129.0" text="Submit" />
