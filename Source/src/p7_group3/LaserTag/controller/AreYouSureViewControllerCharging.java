@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.database.EquipmentDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
+import p7_group3.LaserTag.model.Equipment;
 
 
 /**
@@ -21,7 +22,7 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
  *
  * @author Mette
  */
-public class AreYouSureViewController implements Initializable {
+public class AreYouSureViewControllerCharging implements Initializable {
 
     private ChargingViewController chargingViewController;
         
@@ -43,12 +44,20 @@ public class AreYouSureViewController implements Initializable {
     @FXML
     public void yesButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) yesButton.getScene().getWindow();
-        
-        equipmentDAO.GetBySqlSearchRead();
+        equipmentDAO.GetUpdatesCheckbox();
+        System.out.println(Equipment.equipmentList);
+        Equipment.equipmentList.clear();
         chargingViewController.loadDatabaseCharging();
-        
         stage.close();
     }
+    
+    /*
+        public void test(ActionEvent event){
+        equipmentDAO.GetUpdatesCheckbox();
+        Equipment.equipmentList.clear();
+        loadDatabaseCharging();
+    }
+    */
     
     //when pushing no button, the pop up window closes
     @FXML

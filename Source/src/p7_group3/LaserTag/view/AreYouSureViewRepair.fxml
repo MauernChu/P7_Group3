@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AreYouSureViewControllerCharging">
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AreYouSureViewControllerRepair">
     <stylesheets>
         <URL value="@/p7_group3/LaserTag/view/areyousureview.css" />
     </stylesheets>

@@ -30,7 +30,7 @@
             <TableView fx:id="equipmentTableID" fixedCellSize="0.0" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0">
               <columns>
                   <TableColumn fx:id="checkbox" editable="false" prefWidth="49.0" resizable="false" sortable="false" text="Select" />
-                  <TableColumn fx:id="equipmentID" editable="false" prefWidth="373.0" resizable="false" sortable="false" text="Equipment ID" />
+                  <TableColumn fx:id="equipmentID" editable="false" prefWidth="373.0" resizable="false" text="Equipment ID" />
                   <TableColumn fx:id="dateCharged" editable="false" minWidth="0.0" prefWidth="261.0" resizable="false" sortable="false" text="Date of charge" />
               </columns>
                <columnResizePolicy>

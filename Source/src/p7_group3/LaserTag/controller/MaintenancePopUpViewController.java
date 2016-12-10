@@ -72,7 +72,7 @@ public class MaintenancePopUpViewController implements Initializable {
         damageDescription = DamageDescription.getText();
         nameDiscoveredDamage = name.getText();
         maintenanceDAO.GetProblemDescription(damageDescription, nameDiscoveredDamage, problem);
-        
+        chargingViewController.loadDatabaseCharging();
         stage.close();
     }
     @FXML

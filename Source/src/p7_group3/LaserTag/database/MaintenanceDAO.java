@@ -65,7 +65,7 @@ public class MaintenanceDAO {
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = new Maintenance (rs.getString(7), rs.getDate(11), rs.getString(8), rs.getString(12));
-                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
+                equipments.add(new Equipment(rs.getString(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -79,11 +79,39 @@ public class MaintenanceDAO {
         public void GetProblemDescription(String damageDescription, String nameDiscoveredDamage, String problem) { 
         Statement stmt = null;
         try {
+            for (int i =0; i < Equipment.equipmentList.size();i++ ){
+                String s = Equipment.equipmentList.get(i);
+            
             stmt = dbConnection.createConnection().createStatement();
-           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"'");
-           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+nameDiscoveredDamage+"'");
-           int rs2 = stmt.executeUpdate("UPDATE MainDatabase SET DamageDefinition = '"+problem+"'");
-           int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime')");
+            // Update database with values
+           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"' WHERE ID ='"+s+"'");
+           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+nameDiscoveredDamage+"' WHERE ID ='"+s+"'");
+           int rs2 = stmt.executeUpdate("UPDATE MainDatabase SET DamageDefinition = '"+problem+"' WHERE ID ='"+s+"'");
+           int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime') WHERE ID ='"+s+"'");
+           
+           // Send corresponding equipment to Maintenance
+           int rs4 = stmt.executeUpdate("UPDATE MainDatabase SET Maintenance = '"+null+"' WHERE ID ='"+s+"'");
+            }
+ 
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    
+
+}
+        
+                public void Repaired() { 
+        Statement stmt = null;
+        try {
+            for (int i =0; i < Equipment.equipmentList.size();i++ ){
+                String s = Equipment.equipmentList.get(i);
+            
+            stmt = dbConnection.createConnection().createStatement();
+           
+           // Send repaired equipment back
+           int rs = stmt.executeUpdate("UPDATE MainDatabase SET Maintenance = '"+1+"' WHERE ID ='"+s+"'");
+            }
  
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);

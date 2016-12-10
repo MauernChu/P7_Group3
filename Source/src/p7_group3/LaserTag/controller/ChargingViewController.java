@@ -168,6 +168,7 @@ public class ChargingViewController implements Initializable {
         changeSceneToChargingView();
         loadDatabaseCharging();
     }
+    
 
     // Created method for changing scene to charging view
     private void changeSceneToChargingView() throws IOException {
@@ -537,7 +538,7 @@ public class ChargingViewController implements Initializable {
         stage.setScene(scene);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        AreYouSureViewController areYouSureViewController = loader.getController();
+        AreYouSureViewControllerCharging areYouSureViewController = loader.getController();
         areYouSureViewController.setChargingViewController(this);
     }
 

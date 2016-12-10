@@ -69,7 +69,7 @@ public class EquipmentDAO {
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                equipments.add(new Equipment(rs.getInt(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
+                equipments.add(new Equipment(rs.getString(1), rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -86,6 +86,24 @@ public class EquipmentDAO {
             stmt = dbConnection.createConnection().createStatement();
             int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime')");
             // equipmentTable.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance));
+
+        } catch (SQLException ex) {
+            Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+        public void GetUpdatesCheckbox() {
+        //ArrayList<Equipment> equipmentTable = new ArrayList<Equipment>();
+        Statement stmt = null;
+        
+        try {
+            stmt = dbConnection.createConnection().createStatement();
+            
+            for (int i =0; i < Equipment.equipmentList.size();i++ ){
+                String s = Equipment.equipmentList.get(i);
+             int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime') WHERE ID ='"+s+"' ");
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);

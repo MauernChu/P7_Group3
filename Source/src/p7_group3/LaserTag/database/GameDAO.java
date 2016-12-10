@@ -66,7 +66,7 @@ public class GameDAO {
             while (rs.next()) {
                 ChargingStatus chargingStatus = new ChargingStatus(rs.getDate(4));
                 Maintenance maintenance = null;
-                gameEquipment.add(new Equipment(rs.getInt(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
+                gameEquipment.add(new Equipment(rs.getString(1),rs.getString(2), chargingStatus, maintenance, rs.getBoolean(9), rs.getBoolean(10)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(EquipmentDAO.class.getName()).log(Level.SEVERE, null, ex);
