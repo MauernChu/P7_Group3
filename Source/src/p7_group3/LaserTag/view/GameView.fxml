@@ -36,7 +36,6 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button fx:id="updateButton" layoutX="14.0" layoutY="528.0" mnemonicParsing="false" onAction="#areYouSurePopUp" prefHeight="31.0" prefWidth="132.0" styleClass="updateButton" text="Update" />
             <MenuButton fx:id="selectEquipment" layoutX="631.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropDownMenu" prefHeight="30.0" prefWidth="170.0" text="All equipment">
               <items>
                 <MenuItem fx:id="allEquipment" mnemonicParsing="false" onAction="#showAllEquipmentGame" text="All equipment" />

@@ -597,7 +597,7 @@ public class ChargingViewController implements Initializable {
 
                 getStyleClass().remove("highlightedRow");
                 long DAY_IN_MS = 1000 * 60 * 60 * 24;
-                Date expireDate = new Date(System.currentTimeMillis() - (1 * DAY_IN_MS));
+                Date expireDate = new Date(System.currentTimeMillis() - (2 * DAY_IN_MS));
                 if (Equipment.getChargingStatus().getDateCharged().before(expireDate)) {
 
                     getStyleClass().add("highlightedRow");
