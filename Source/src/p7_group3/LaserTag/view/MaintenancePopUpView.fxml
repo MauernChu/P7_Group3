@@ -11,24 +11,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="431.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenancePopUpViewController">
+<AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="431.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenancePopUpViewController">
     <stylesheets>
         <URL value="@maintenancepopupview.css" />
     </stylesheets>
    <children>
       <Label layoutX="10.0" layoutY="14.0" prefHeight="52.0" prefWidth="421.0" text="Send broken equipment to maintenance">
          <font>
-            <Font name="System Bold" size="21.0" />
+            <Font name="Helvetica Bold" size="21.0" />
          </font>
       </Label>
       <Label layoutX="10.0" layoutY="86.0" prefHeight="34.0" prefWidth="129.0" text="Enter your name">
          <font>
-            <Font size="13.0" />
+            <Font name="Helvetica" size="13.0" />
          </font>
       </Label>
-      <TextField id="name" fx:id="name" layoutX="140.0" layoutY="86.0" prefHeight="34.0" prefWidth="267.0" promptText="Name" />
-      <TextField id="ProblemDescription" fx:id="DamageDescription" alignment="TOP_LEFT" layoutX="140.0" layoutY="175.0" prefHeight="116.0" prefWidth="267.0" promptText="Enter problem description" />
-      <Label layoutX="10.0" layoutY="134.0" prefHeight="25.0" prefWidth="109.0" text="Choose a problem" />
+      <TextField id="name" fx:id="name" layoutX="140.0" layoutY="86.0" prefHeight="34.0" prefWidth="267.0" promptText="Name">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></TextField>
+      <TextField id="ProblemDescription" fx:id="DamageDescription" alignment="TOP_LEFT" layoutX="140.0" layoutY="175.0" prefHeight="116.0" prefWidth="267.0" promptText="Enter problem description">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></TextField>
+      <Label layoutX="10.0" layoutY="134.0" prefHeight="25.0" prefWidth="109.0" text="Choose a problem">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Label>
       <MenuButton fx:id="defineProblem" layoutX="140.0" layoutY="131.0" mnemonicParsing="false" onAction="#dropDownMenuForMaintenancePopUp" prefHeight="34.0" prefWidth="267.0" text="Define problem">
         <items>
           <MenuItem id="problemText" fx:id="problemText" mnemonicParsing="false" onAction="#Trigger" text="Trigger" />
@@ -36,9 +45,18 @@
             <MenuItem id="problemText2" fx:id="problemText2" mnemonicParsing="false" onAction="#CantTurnOn" text="Cannot turn on" />
             <MenuItem id="problemText3" fx:id="problemText3" mnemonicParsing="false" onAction="#Other" text="Other" />
         </items>
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font>
       </MenuButton>
-      <Button fx:id="submitButton" layoutX="140.0" layoutY="304.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="34.0" prefWidth="129.0" text="Submit" />
-      <Button fx:id="cancleButton" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" onAction="#cancleButtonAction" prefHeight="34.0" prefWidth="129.0" text="Cancel" />
+      <Button fx:id="submitButton" layoutX="140.0" layoutY="304.0" mnemonicParsing="false" onAction="#submitButtonAction" prefHeight="34.0" prefWidth="129.0" text="Submit">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Button>
+      <Button fx:id="cancleButton" layoutX="279.0" layoutY="304.0" mnemonicParsing="false" onAction="#cancleButtonAction" prefHeight="34.0" prefWidth="129.0" text="Cancel">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Button>
       <ImageView fitHeight="75.0" fitWidth="109.0" layoutX="14.0" layoutY="282.0">
          <image>
             <Image url="@FuncenterLogo.png" />

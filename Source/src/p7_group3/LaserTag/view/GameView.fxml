@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>
@@ -45,12 +45,12 @@
                   <MenuItem fx:id="dominationBoxes" mnemonicParsing="false" onAction="#showDominationBoxesGame" text="Domination Boxes" />
               </items>
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="Helvetica Bold" size="15.0" />
                </font>
             </MenuButton>
             <Label layoutX="631.0" layoutY="100.0" text="Select equipment">
                <font>
-                  <Font name="System Italic" size="13.0" />
+                  <Font name="Helvetica Bold" size="13.0" />
                </font></Label>
             <ImageView fitHeight="66.0" fitWidth="100.0" layoutX="685.0" layoutY="523.0">
                <image>
@@ -61,7 +61,7 @@
       </Pane>
       <Label layoutX="45.0" layoutY="86.0" prefHeight="53.0" prefWidth="120.0" text="Game">
          <font>
-            <Font name="System Bold" size="36.0" />
+            <Font name="Helvetica Bold" size="36.0" />
          </font>
       </Label>
    </children>

@@ -8,17 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AddEquipmentViewController">
+<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AddEquipmentViewController">
    <children>
       <Label layoutX="99.0" layoutY="14.0" prefHeight="47.0" prefWidth="177.0" text="Add equipment">
          <font>
-            <Font name="System Bold" size="22.0" />
+            <Font name="Helvetica Bold" size="22.0" />
          </font>
       </Label>
-      <TextField layoutX="77.0" layoutY="85.0" prefHeight="25.0" prefWidth="223.0" promptText="Example: 27 Gun" />
-      <Button fx:id="submitAddEquipmentButton" layoutX="77.0" layoutY="136.0" mnemonicParsing="false" onAction="#submitAddEquipmentButtonAction" prefHeight="25.0" prefWidth="100.0" text="Submit" />
-      <Label layoutX="85.0" layoutY="65.0" prefHeight="17.0" prefWidth="212.0" text="Write number and name of equipment" />
-      <Button fx:id="cancleAddEquipmentButton" layoutX="200.0" layoutY="136.0" mnemonicParsing="false" onAction="#cancleAddEquipmentButtonAction" prefHeight="25.0" prefWidth="101.0" text="Cancel" />
+      <TextField layoutX="77.0" layoutY="85.0" prefHeight="25.0" prefWidth="223.0" promptText="Example: 27 Gun">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></TextField>
+      <Button fx:id="submitAddEquipmentButton" layoutX="77.0" layoutY="136.0" mnemonicParsing="false" onAction="#submitAddEquipmentButtonAction" prefHeight="25.0" prefWidth="100.0" text="Submit">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Button>
+      <Label layoutX="85.0" layoutY="65.0" prefHeight="17.0" prefWidth="212.0" text="Write number and name of equipment">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Label>
+      <Button fx:id="cancleAddEquipmentButton" layoutX="200.0" layoutY="136.0" mnemonicParsing="false" onAction="#cancleAddEquipmentButtonAction" prefHeight="25.0" prefWidth="101.0" text="Cancel">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font></Button>
       <ImageView fitHeight="66.0" fitWidth="100.0" layoutX="274.0" layoutY="172.0">
          <image>
             <Image url="@FuncenterLogo.png" />
