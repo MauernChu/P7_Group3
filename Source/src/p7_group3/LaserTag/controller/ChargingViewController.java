@@ -168,7 +168,6 @@ public class ChargingViewController implements Initializable {
         changeSceneToChargingView();
         loadDatabaseCharging();
     }
-    
 
     // Created method for changing scene to charging view
     private void changeSceneToChargingView() throws IOException {
@@ -191,9 +190,8 @@ public class ChargingViewController implements Initializable {
         checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
 
             public TableCell<Equipment, Boolean> call(TableColumn<Equipment, Boolean> p) {
-                return new CheckBoxTableCell<Equipment, Boolean>();
+                return new CheckBoxTableCell<>();
             }
-
         });
 
         equipmentTableID.setItems(null);
@@ -207,7 +205,6 @@ public class ChargingViewController implements Initializable {
 
         equipmentTableID.setItems(equipmentList);
         updateColor();
-
     }
 
     //Changing scene to game scene and loading database in game View 
@@ -542,7 +539,6 @@ public class ChargingViewController implements Initializable {
         areYouSureViewController.setChargingViewController(this);
     }
 
-    
     //Method for sendToMaintenance pop up window
     public void sendToMaintenancePopUp(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/MaintenancePopUpView.fxml"));
@@ -557,7 +553,7 @@ public class ChargingViewController implements Initializable {
         MaintenancePopUpViewController maintenancePopUpViewController = loader.getController();
         maintenancePopUpViewController.setChargingViewController(this);
     }
-    
+
     //Method for AddEquipment pop up window
     public void addEquipment(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("p7_group3/LaserTag/view/AddEquipmentView.fxml"));
@@ -604,8 +600,6 @@ public class ChargingViewController implements Initializable {
 
                 }
             }
-            return;
-
         }
     }
 
@@ -640,7 +634,6 @@ public class ChargingViewController implements Initializable {
 
                 }
             }
-            return;
         }
     }
 
@@ -661,7 +654,6 @@ public class ChargingViewController implements Initializable {
             // this.checkBox.selectedProperty().addListener(new RowCheckBoxChangeListener(index));
             setAlignment(Pos.CENTER);
             setGraphic(checkBox);
-
         }
 
         @Override
@@ -681,7 +673,6 @@ public class ChargingViewController implements Initializable {
                     checkBox.selectedProperty().bindBidirectional((BooleanProperty) ov);
                 }
             }
-
         }
     }
 
