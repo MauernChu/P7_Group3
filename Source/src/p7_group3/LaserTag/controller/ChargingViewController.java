@@ -185,7 +185,7 @@ public class ChargingViewController implements Initializable {
         equipmentList.addAll(equipmentDAO.GetAllEquipment());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
         checkbox.setCellValueFactory(cellData -> cellData.getValue().checkbox);
 
         checkbox.setCellFactory(new Callback<TableColumn<Equipment, Boolean>, TableCell<Equipment, Boolean>>() {
@@ -232,7 +232,7 @@ public class ChargingViewController implements Initializable {
         gameEquipmentList.addAll(gameDAO.GetGameEquipment());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameEquipmentList);
@@ -277,8 +277,8 @@ public class ChargingViewController implements Initializable {
         maintenanceEquipmentList.addAll(maintenanceDAO.GetBrokenEquipment());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
-        maintenanceDateBroken.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().maintenance.getDateBroken())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenanceDateBroken.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().maintenance.getDateBroken())));
         maintenanceNameDiscoveredDamage.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().maintenance.getNameDiscoverDamage())));
         maintenanceDamageDefinition.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().maintenance.getDamageDefinition())));
 
@@ -300,7 +300,7 @@ public class ChargingViewController implements Initializable {
         equipmentList.addAll(equipmentDAO.GetAllEquipment());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(equipmentList);
@@ -315,7 +315,7 @@ public class ChargingViewController implements Initializable {
         gameEquipmentList.addAll(gameDAO.GetGameEquipment());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameEquipmentList);
@@ -330,7 +330,7 @@ public class ChargingViewController implements Initializable {
         maintenanceEquipmentList.addAll(maintenanceDAO.GetBrokenEquipment());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceEquipmentList);
@@ -346,7 +346,7 @@ public class ChargingViewController implements Initializable {
         gunList.addAll(equipmentDAO.GetAllGuns());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gunList);
@@ -361,7 +361,7 @@ public class ChargingViewController implements Initializable {
         gameGunList.addAll(gameDAO.GetAllGameGuns());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameGunList);
@@ -377,7 +377,7 @@ public class ChargingViewController implements Initializable {
         maintenanceGunList.addAll(maintenanceDAO.GetAllBrokenGuns());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceGunList);
@@ -393,7 +393,7 @@ public class ChargingViewController implements Initializable {
         medicBoxList.addAll(equipmentDAO.GetAllMedicBoxes());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(medicBoxList);
@@ -408,7 +408,7 @@ public class ChargingViewController implements Initializable {
         gameMedicBoxList.addAll(gameDAO.GetAllGameMedicBoxes());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameMedicBoxList);
@@ -424,7 +424,7 @@ public class ChargingViewController implements Initializable {
         maintenanceMedicBoxList.addAll(maintenanceDAO.GetAllBrokenMedicBoxes());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceMedicBoxList);
@@ -440,7 +440,7 @@ public class ChargingViewController implements Initializable {
         gameControllerList.addAll(equipmentDAO.GetAllGameControllers());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(gameControllerList);
@@ -455,7 +455,7 @@ public class ChargingViewController implements Initializable {
         gameGameControllerList.addAll(gameDAO.GetAllGameControllersGame());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameGameControllerList);
@@ -471,7 +471,7 @@ public class ChargingViewController implements Initializable {
         maintenanceGameControllerList.addAll(maintenanceDAO.GetAllBrokenGameControllers());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceGameControllerList);
@@ -487,7 +487,7 @@ public class ChargingViewController implements Initializable {
         dominationBoxList.addAll(equipmentDAO.GetAllDominationBoxes());
 
         equipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        dateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         equipmentTableID.setItems(null);
         equipmentTableID.setItems(dominationBoxList);
@@ -502,7 +502,7 @@ public class ChargingViewController implements Initializable {
         gameDominationBoxList.addAll(gameDAO.GetAllGameDominationBoxes());
 
         gameEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
+        gamedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         gameTableID.setItems(null);
         gameTableID.setItems(gameDominationBoxList);
@@ -518,7 +518,7 @@ public class ChargingViewController implements Initializable {
         maintenanceDominationBoxList.addAll(maintenanceDAO.GetAllBrokenDominationBoxes());
 
         maintenanceEquipmentID.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(((String) cellData.getValue().name)));
-        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd/MM/yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
+        maintenancedateCharged.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(new SimpleDateFormat("dd-MM-yyyy").format(cellData.getValue().chargingStatus.getDateCharged())));
 
         maintenanceTableID.setItems(null);
         maintenanceTableID.setItems(maintenanceDominationBoxList);
