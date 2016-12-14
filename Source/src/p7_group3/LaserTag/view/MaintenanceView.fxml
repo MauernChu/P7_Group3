@@ -30,7 +30,7 @@
             <TableView fx:id="maintenanceTableID" fixedCellSize="0.0" layoutX="14.0" layoutY="162.0" prefHeight="349.0" prefWidth="785.0">
               <columns>
                   <TableColumn fx:id="maintenanceEquipmentID" prefWidth="139.0" text="Equipment ID" />
-                  <TableColumn fx:id="maintenancedateCharged" minWidth="0.0" prefWidth="139.0" text="Date of charge" />
+                  <TableColumn fx:id="maintenancedateCharged" minWidth="0.0" prefWidth="139.0" text="Last Time Charged" />
                   <TableColumn fx:id="maintenanceDateBroken" prefWidth="143.0" text="Date broken" />
                   <TableColumn fx:id="maintenanceDamageDefinition" prefWidth="193.0" text="Damage definition" />
                   <TableColumn fx:id="maintenanceNameDiscoveredDamage" minWidth="0.0" prefWidth="143.0" text="Name" />
