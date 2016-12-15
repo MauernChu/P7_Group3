@@ -9,10 +9,6 @@ import javafx.stage.Stage;
 import p7_group3.LaserTag.controller.ChargingViewController;
 
 
-/**
- *
- * @author Mette
- */
 public class MainApplication extends Application {
     
     public MainApplication mainApplication;

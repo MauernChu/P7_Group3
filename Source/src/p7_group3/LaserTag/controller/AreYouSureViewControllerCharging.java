@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p7_group3.LaserTag.controller;
 
 import java.io.IOException;
@@ -17,26 +12,19 @@ import p7_group3.LaserTag.database.SqliteConnectionImpl;
 import p7_group3.LaserTag.model.Equipment;
 
 
-/**
- * FXML Controller class
- *
- * @author Mette
- */
 public class AreYouSureViewControllerCharging implements Initializable {
 
     private ChargingViewController chargingViewController;
         
     public EquipmentDAO equipmentDAO;
    
-    /**
-     * Initializes the controller class.
-     */
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         equipmentDAO = new EquipmentDAO(new SqliteConnectionImpl());
         // TODO
     }
+    
     //when pushing yes button, the pop up window closes
     @FXML
     private javafx.scene.control.Button yesButton;
@@ -50,14 +38,6 @@ public class AreYouSureViewControllerCharging implements Initializable {
         chargingViewController.loadDatabaseCharging();
         stage.close();
     }
-    
-    /*
-        public void test(ActionEvent event){
-        equipmentDAO.GetUpdatesCheckbox();
-        Equipment.equipmentList.clear();
-        loadDatabaseCharging();
-    }
-    */
     
     //when pushing no button, the pop up window closes
     @FXML

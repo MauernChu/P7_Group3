@@ -1,9 +1,8 @@
 /*
 Table of content:
 1 - Navigation styling
-2 - Dropdown styling
-3 - Table styling
-4 - Update button styling
+2 - Table styling
+3 - Update button styling
 */
 
 
@@ -26,6 +25,7 @@ Table of content:
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
+
 #mainNav .button:hover{ 
     -fx-background-color: 
        -fx-shadow-highlight-color,
@@ -40,6 +40,7 @@ Table of content:
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
+
 .currentButton {
     -fx-background-color:
         -fx-shadow-highlight-color,
@@ -59,9 +60,7 @@ Table of content:
     -fx-fill: white;
 }
 
-/* 2 Dropdown styling */
-
-/* 3 Table styling */
+/* 2 Table styling */
 .highlightedRow{
      -fx-background-color:#EB997A;
      -fx-font-weight:bold;
@@ -76,8 +75,14 @@ Table of content:
 .table-row-cell{
     -fx-border-color:lightgray;
 }
+    
 
-/* 4 Update button styling */
+.table-view .column-header .label{
+    -fx-alignment: CENTER_LEFT;
+}
+
+
+/* 3 Update button styling */
 .updateButton{
        -fx-background-color: 
         #a6b5c9,
@@ -106,6 +111,3 @@ Table of content:
     -fx-text-fill: white;
 }
     
-.table-view .column-header .label{
-    -fx-alignment: CENTER_LEFT
-}

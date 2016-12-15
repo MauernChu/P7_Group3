@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="374.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AddEquipmentViewController">
+<AnchorPane id="AnchorPane" prefHeight="243.0" prefWidth="374.0" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.AddEquipmentViewController">
    <children>
       <Label layoutX="99.0" layoutY="14.0" prefHeight="47.0" prefWidth="177.0" text="Add equipment">
          <font>

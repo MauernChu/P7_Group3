@@ -6,12 +6,7 @@
 package p7_group3.LaserTag.model;
 
 import java.util.Date;
-import java.sql.Time;
 
-/**
- *
- * @author Mette
- */
 public class ChargingStatus {
     
     private Date dateCharged;

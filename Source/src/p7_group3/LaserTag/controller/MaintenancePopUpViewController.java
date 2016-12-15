@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p7_group3.LaserTag.controller;
 
 import java.io.IOException;
@@ -18,11 +13,7 @@ import javafx.stage.Stage;
 import p7_group3.LaserTag.database.MaintenanceDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
-/**
- * FXML Controller class
- *
- * @author karatinka
- */
+
 public class MaintenancePopUpViewController implements Initializable {
 
     public ChargingViewController chargingViewController;
@@ -51,17 +42,13 @@ public class MaintenancePopUpViewController implements Initializable {
 
    
     
-    
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         maintenanceDAO = new MaintenanceDAO(new SqliteConnectionImpl());
         // TODO
     }
+    
     //when pushing Submit button, the pop up window closes
     @FXML
     private javafx.scene.control.Button submitButton;

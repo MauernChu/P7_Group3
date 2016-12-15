@@ -3,7 +3,6 @@ package p7_group3.LaserTag.controller;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-//import java.util.Date;
 import java.sql.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.BooleanProperty;
@@ -113,14 +112,7 @@ public class ChargingViewController implements Initializable {
     TableColumn<Equipment, String> maintenanceNameDiscoveredDamage;
     @FXML
     TableColumn<Equipment, String> maintenanceDamageDefinition;
-
-    /*@FXML
-    TableColumn<Equipment, String> damageDescription;
-    @FXML
-    TableColumn<Equipment, Double> dateBroken;
-    @FXML
-    TableColumn<Equipment, Double> dateRepaired;
-     */
+    
     //Variables for Drop Down Menu SHARED BETWEEN ALL PAGES
     @FXML
     public MenuButton selectEquipment;
@@ -647,11 +639,6 @@ public class ChargingViewController implements Initializable {
             this.checkBox = new CheckBox();
             this.checkBox.setAlignment(Pos.CENTER);
 
-            // Equipment.class.cast(ov);
-            // TableRow tr = this.getTableRow();
-            //int index = tr.getIndex();
-            //int index = 2;
-            // this.checkBox.selectedProperty().addListener(new RowCheckBoxChangeListener(index));
             setAlignment(Pos.CENTER);
             setGraphic(checkBox);
         }

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -11,10 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="431.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenancePopUpViewController">
-    <stylesheets>
-        <URL value="@maintenancepopupview.css" />
-    </stylesheets>
+<AnchorPane id="AnchorPane" prefHeight="358.0" prefWidth="431.0" styleClass="mainFxmlClass" stylesheets="@MainStylesheet.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="p7_group3.LaserTag.controller.MaintenancePopUpViewController">
    <children>
       <Label layoutX="10.0" layoutY="14.0" prefHeight="52.0" prefWidth="421.0" text="Send broken equipment to maintenance">
          <font>

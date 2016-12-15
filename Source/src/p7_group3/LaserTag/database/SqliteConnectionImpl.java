@@ -1,5 +1,3 @@
-//
-
 package p7_group3.LaserTag.database;
 
 import java.sql.Connection;

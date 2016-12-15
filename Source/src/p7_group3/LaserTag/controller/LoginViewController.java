@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package p7_group3.LaserTag.controller;
 
 import java.io.IOException;
@@ -17,26 +12,19 @@ import javafx.scene.control.TextField;
 import p7_group3.LaserTag.database.AdminAccessDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
 
-/**
- * FXML Controller class
- *
- * @author Mette
- */
 public class LoginViewController implements Initializable {
 
     ChargingViewController chargingViewController;
     AdminAccessDAO adminAccessDao = new AdminAccessDAO(new SqliteConnectionImpl());
             
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
 
+    //Creates variable connected to Scenebuilder through ID
     @FXML
-    private Label lblStatus; //Creates variable connected to Scenebuilder through ID
+    private Label lblStatus;
 
     @FXML
     public Label lblTitel;
