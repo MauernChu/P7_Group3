@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import p7_group3.LaserTag.database.MaintenanceDAO;
 import p7_group3.LaserTag.database.SqliteConnectionImpl;
+import p7_group3.LaserTag.model.Equipment;
 
 
 public class MaintenancePopUpViewController implements Initializable {
@@ -59,6 +60,7 @@ public class MaintenancePopUpViewController implements Initializable {
         damageDescription = DamageDescription.getText();
         nameDiscoveredDamage = name.getText();
         maintenanceDAO.GetProblemDescription(damageDescription, nameDiscoveredDamage, problem);
+        Equipment.equipmentList.clear();
         chargingViewController.loadDatabaseCharging();
         stage.close();
     }
