@@ -32,7 +32,7 @@ public class AreYouSureViewControllerCharging implements Initializable {
     @FXML
     public void yesButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) yesButton.getScene().getWindow();
-        equipmentDAO.GetUpdatesCheckbox();
+        equipmentDAO.UpdateCheckboxes();
         System.out.println(Equipment.equipmentList);
         Equipment.equipmentList.clear();
         chargingViewController.loadDatabaseCharging();

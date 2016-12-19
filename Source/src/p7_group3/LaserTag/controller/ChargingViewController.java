@@ -191,7 +191,7 @@ public class ChargingViewController implements Initializable {
         equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
             @Override
             public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
-                return new TableRowColorFormat();
+                return new UpdateTableRowRed();
             }
         });
 
@@ -565,12 +565,12 @@ public class ChargingViewController implements Initializable {
         equipmentTableID.setRowFactory(new Callback<TableView<Equipment>, TableRow<Equipment>>() {
             @Override
             public TableRow<Equipment> call(TableView<Equipment> tableTableView) {
-                return new TableRowColorFormat();
+                return new UpdateTableRowRed();
             }
         });
     }
 
-    private class TableRowColorFormat extends TableRow {
+    private class UpdateTableRowRed extends TableRow {
 
         @Override
         protected void updateItem(Object o, boolean b) {

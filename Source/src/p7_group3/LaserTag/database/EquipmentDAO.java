@@ -82,7 +82,7 @@ public class EquipmentDAO {
 
     }
     
-        public void GetUpdatesCheckbox() {
+        public void UpdateCheckboxes() {
         Statement stmt = null;
         
         try {
@@ -90,7 +90,8 @@ public class EquipmentDAO {
             
             for (int i =0; i < Equipment.equipmentList.size();i++ ){
                 String s = Equipment.equipmentList.get(i);
-             int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', 'localtime') WHERE ID ='"+s+"' ");
+             int rs = stmt.executeUpdate("UPDATE MainDatabase SET TimePutToChargeNumeric = strftime('%J', 'NOW', "
+                     + "'localtime') WHERE ID ='"+s+"' ");
             }
 
         } catch (SQLException ex) {

@@ -79,10 +79,14 @@ public class MaintenanceDAO {
             
             stmt = dbConnection.createConnection().createStatement();
             // Update database with values
-           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"' WHERE ID ='"+s+"'");
-           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+nameDiscoveredDamage+"' WHERE ID ='"+s+"'");
+           int rs = stmt.executeUpdate("UPDATE MainDatabase SET DamageDescription = '"+damageDescription+"'"
+                    + " WHERE ID ='"+s+"'");
+           int rs1 = stmt.executeUpdate("UPDATE MainDatabase SET IdentifierOfProblem = '"+nameDiscoveredDamage+""
+                    + "' WHERE ID ='"+s+"'");
            int rs2 = stmt.executeUpdate("UPDATE MainDatabase SET DamageDefinition = '"+problem+"' WHERE ID ='"+s+"'");
-           int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime') WHERE ID ='"+s+"'");
+           
+           int rs3 = stmt.executeUpdate("UPDATE MainDatabase SET DateBroken = strftime('%J', 'NOW', 'localtime') "
+                    + "WHERE ID ='"+s+"'");
            
            // Send corresponding equipment to Maintenance
            int rs4 = stmt.executeUpdate("UPDATE MainDatabase SET Maintenance = '"+null+"' WHERE ID ='"+s+"'");
